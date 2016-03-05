@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">DreamRoom</string>
+
+    <string name="nav_item1">菜单1</string>
+    <string name="nav_item2">菜单2</string>
+    <string name="nav_item3">菜单3</string>
+    <string name="nav_item4">菜单4</string>
+
+    <string name="header_author_name">magical</string>
+    <string name="header_author_url">https://github.com/magical-xu</string>
 </resources>

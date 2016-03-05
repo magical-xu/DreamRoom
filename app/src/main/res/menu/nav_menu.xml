@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single" ><!-- 实现单选 -->
+
+        <item android:id="@+id/nav_item1"
+            android:icon="@drawable/checked"
+            android:title="@string/nav_item1"/>
+        <item android:id="@+id/nav_item2"
+            android:icon="@drawable/checked"
+            android:title="@string/nav_item2"/>
+        <item android:id="@+id/nav_item3"
+            android:icon="@drawable/checked"
+            android:title="@string/nav_item3"/>
+        <item android:id="@+id/nav_item4"
+            android:icon="@drawable/checked"
+            android:title="@string/nav_item4"/>
+    </group>
+
+    <item android:title="Sub items">
+        <menu>
+            <item
+                android:icon="@drawable/checked"
+                android:title="Sub item 1" />
+            <item
+                android:icon="@drawable/checked"
+                android:title="Sub item 2" />
+        </menu>
+    </item>
+</menu>

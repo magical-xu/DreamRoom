@@ -6,15 +6,18 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.idreamsky.dreamroom.R;
+import com.idreamsky.dreamroom.constant.ConstantString;
+import com.idreamsky.dreamroom.util.ToastUtil;
 
 import org.xutils.x;
 
 /**
- * Created by Administrator on 2016/3/5.
+ * Created by magical on 2016/3/5.
  */
-public class BaseActivity extends AppCompatActivity{
+public class BaseActivity extends AppCompatActivity implements ConstantString, ToastUtil {
 
     private FragmentManager fragmentManager;
     private Fragment showFragment;
@@ -22,7 +25,7 @@ public class BaseActivity extends AppCompatActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        x.view().inject(this);//把当前的activity注册进xutils3.0
+        x.view().inject(this);//把当前的activity注册进xutils
         fragmentManager = getSupportFragmentManager();
 
         init();
@@ -32,19 +35,20 @@ public class BaseActivity extends AppCompatActivity{
     /**
      * 初始化
      */
-    public void init(){
+    public void init() {
 
     }
 
     /**
      * 加载数据
      */
-    public void loadDatas(){
+    public void loadDatas() {
 
     }
 
     /**
      * 带默认过程动画的启动Activity方式
+     *
      * @param intent
      */
     @Override
@@ -54,6 +58,7 @@ public class BaseActivity extends AppCompatActivity{
 
     /**
      * 自定义过场动画的Activity启动方式
+     *
      * @param intent
      * @param animin
      * @param animout
@@ -63,31 +68,38 @@ public class BaseActivity extends AppCompatActivity{
         overridePendingTransition(animin, animout);
     }
 
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.anim_none, R.anim.trans_center_2_right);
+    }
+
     /**
      * fragment管理 -- 不包含过程动画的方式
      */
-    public void fragmentManager(int fl_resid, Class fclass){
+    public void fragmentManager(int fl_resid, Class fclass) {
         fragmentManager(fl_resid, 0, 0, fclass);
     }
 
     /**
      * 包含动画的fragment管理
+     *
      * @param fl_resid 给fragment占位的布局id
-     * @param fclass fragment进入的动画
-     * @param inanim fragment退出的动画
-     * @param outanim 需要显示的fragment的Class对象
+     * @param fclass   fragment进入的动画
+     * @param inanim   fragment退出的动画
+     * @param outanim  需要显示的fragment的Class对象
      */
-    public void fragmentManager(int fl_resid, int inanim, int outanim, Class<BaseFragment> fclass){
+    public void fragmentManager(int fl_resid, int inanim, int outanim, Class<BaseFragment> fclass) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        if(inanim != 0 || outanim != 0){
+        if (inanim != 0 || outanim != 0) {
             fragmentTransaction.setCustomAnimations(inanim, outanim);
         }
 
         Fragment fragmentByTag = fragmentManager.findFragmentByTag(fclass.getName());
-        if(showFragment != null){
+        if (showFragment != null) {
             fragmentTransaction.hide(showFragment);
         }
-        if(fragmentByTag != null){
+        if (fragmentByTag != null) {
             fragmentTransaction.show(fragmentByTag);
             showFragment = fragmentByTag;
         } else {
@@ -99,4 +111,13 @@ public class BaseActivity extends AppCompatActivity{
     }
 
 
+    @Override
+    public void shortToast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void longToast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
 }
