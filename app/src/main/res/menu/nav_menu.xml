@@ -1,30 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single" ><!-- 实现单选 -->
+    <group android:checkableBehavior="none">
 
-        <item android:id="@+id/nav_item1"
-            android:icon="@drawable/checked"
-            android:title="@string/nav_item1"/>
-        <item android:id="@+id/nav_item2"
-            android:icon="@drawable/checked"
-            android:title="@string/nav_item2"/>
-        <item android:id="@+id/nav_item3"
-            android:icon="@drawable/checked"
-            android:title="@string/nav_item3"/>
-        <item android:id="@+id/nav_item4"
-            android:icon="@drawable/checked"
-            android:title="@string/nav_item4"/>
+        <item
+            android:id="@+id/nav_recommend"
+            android:icon="@drawable/menu_choose_d"
+            android:title="@string/nav_recommend" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/menu_home_furnishing_d"
+            android:title="@string/nav_gallery" />
+        <item
+            android:id="@+id/nav_inspiration"
+            android:icon="@drawable/menu_theme_d"
+            android:title="@string/nav_inspiration" />
+        <item
+            android:id="@+id/nav_collection"
+            android:icon="@drawable/menu_favorite_d"
+            android:title="@string/nav_collection" />
     </group>
 
-    <item android:title="Sub items">
+    <item android:title="华 - 丽 - 的 - 分 - 割 - 线">
         <menu>
             <item
-                android:icon="@drawable/checked"
-                android:title="Sub item 1" />
+                android:id="@+id/nav_about_author"
+                android:icon="@drawable/iconfont_guanyu"
+                android:title="@string/nav_about" />
             <item
-                android:icon="@drawable/checked"
-                android:title="Sub item 2" />
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/iconfont_shezhi"
+                android:title="@string/nav_setting" />
         </menu>
     </item>
 </menu>

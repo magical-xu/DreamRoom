@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">DreamRoom</string>
 
-    <string name="nav_item1">菜单1</string>
-    <string name="nav_item2">菜单2</string>
-    <string name="nav_item3">菜单3</string>
-    <string name="nav_item4">菜单4</string>
+    <string name="nav_recommend">精彩推荐</string>
+    <string name="nav_gallery">家居图库</string>
+    <string name="nav_inspiration">灵感专题</string>
+    <string name="nav_collection">我的收藏</string>
+    <string name="nav_about">关于作者</string>
+    <string name="nav_setting">设置</string>
 
     <string name="header_author_name">magical</string>
     <string name="header_author_url">https://github.com/magical-xu</string>
