@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DreamRoom</string>
+    <string name="app_name">梦想家</string>
 
     <string name="nav_recommend">精彩推荐</string>
     <string name="nav_gallery">家居图库</string>
@@ -8,6 +8,11 @@
     <string name="nav_about">关于作者</string>
     <string name="nav_setting">设置</string>
 
+    <string name="drawer_open">打开</string>
+    <string name="drawer_close">关闭</string>
+
     <string name="header_author_name">magical</string>
     <string name="header_author_url">https://github.com/magical-xu</string>
+
+
 </resources>

@@ -39,9 +39,9 @@ public class UniversalUtil {
 
         //自定义下载配置
         options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.drawable.checked)// 加载等待 时显示的图片
+                .showImageOnLoading(R.drawable.gallery_default_image)// 加载等待 时显示的图片
                 .showImageForEmptyUri(R.mipmap.ic_launcher)// 加载数据为空时显示的图片
-                .showImageOnFail(R.mipmap.ic_launcher)// 加载失败时显示的图片
+                .showImageOnFail(R.drawable.icon_no_data)// 加载失败时显示的图片
                 .resetViewBeforeLoading(true)//加载前是否重置View
                 .cacheInMemory(true)//是否启用内存缓存
                 .cacheOnDisk(true)//是否启用磁盘缓存

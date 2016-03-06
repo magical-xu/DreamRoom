@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tab_titles">
+
+        <item >首页</item>
+        <item >家装公司</item>
+        <item >免费设计</item>
+        <item >品牌展厅</item>
+        <item >优选活动</item>
+
+    </string-array>
+
+</resources>

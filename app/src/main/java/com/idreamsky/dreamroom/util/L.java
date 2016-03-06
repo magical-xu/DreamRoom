@@ -10,7 +10,7 @@ public class L {
 	private static String mTag = "print";
 	/** 日志输出级别NONE */
 	public static final int LEVEL_OFF = 0;
-	/** 日志输出级别NONE */
+	/** 日志输出级别ALL */
 	public static final int LEVEL_ALL = 7;
 
 	/** 日志输出级别S,自定义定义的一个级别 */
@@ -36,7 +36,7 @@ public class L {
 	private static final Object mLogLock = new Object();
 
 	/**---------------日志输出,已固定TAG  begin---------------**/
-	/** 以级别为 d 的形式输出LOG */
+	/** 以级别为 v 的形式输出LOG */
 	public static void v(String msg) {
 		if (mDebuggable >= LEVEL_VERBOSE) {
 			Log.v(mTag, msg);

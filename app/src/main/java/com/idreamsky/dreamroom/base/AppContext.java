@@ -24,5 +24,6 @@ public class AppContext extends Application {
         UniversalUtil.initUniversal(this);
         ShareUtil.init(this);
         x.Ext.init(this);
+        x.Ext.setDebug(true);
     }
 }

@@ -1,8 +1,16 @@
 package com.idreamsky.dreamroom.ui;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,9 +18,14 @@ import android.view.View;
 
 import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.base.BaseActivity;
+import com.idreamsky.dreamroom.base.BaseFragment;
+import com.idreamsky.dreamroom.ui.fragment.TestFragment;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @ContentView(R.layout.activity_main)
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -22,15 +35,49 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @ViewInject(R.id.id_drawer_layout)
     private DrawerLayout mDrawerLayout;
 
+    @ViewInject(R.id.id_cdntLayout)
+    private CoordinatorLayout mCoordinatorLayout;
+
+    @ViewInject(R.id.id_appBarLayout)
+    private AppBarLayout mAppBarLayout;
+
+    @ViewInject(R.id.id_toorBar)
+    private Toolbar mToolbar;
+
+    @ViewInject(R.id.id_tabLayout)
+    private TabLayout mTabLayout;
+
+    @ViewInject(R.id.id_viewPager)
+    private ViewPager mViewPager;
+
     @ViewInject(R.id.id_nav_menu)
     private NavigationView mNavigationView;
 
     private long exitTime;//记录退出时间
-    private boolean isItemChecked = false;
-    private Menu nav_menu;
+    private Menu nav_menu;//navigation菜单
+    private String[] tab_titles;//TabLayout中的标题
+    private List<Fragment> fragmentList;//ViewPager中的Fragment
+
 
     @Override
     public void init() {
+
+        //获取tab标题
+        tab_titles = getResources().getStringArray(R.array.tab_titles);
+
+        //初始化Fragment集合
+        fragmentList = new ArrayList<>();
+        for (int i = 0; i < tab_titles.length; i++) {
+            Bundle bundle = new Bundle();
+            String type = tab_titles[i];
+            BaseFragment bf = BaseFragment.getInstance(TestFragment.class);
+            bf.bindDatas(type);
+            fragmentList.add(i, bf);
+        }
+
+        //设置DrawerLayout开关指示器，即左边Icon
+        ActionBarDrawerToggle mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
+        mToggle.syncState();
 
         //设置NavigationView顶部布局
         mNavigationView.inflateHeaderView(R.layout.nav_header);
