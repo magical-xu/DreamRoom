@@ -12,4 +12,14 @@
 
     </style>
 
+    <style name="MyToolBarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="actionMenuTextColor">@color/main_white</item> <!--  敲定颜色-->
+        <item name="android:textColorPrimary">@color/main_white</item>
+    </style>
+
+    <!-- toolbar弹出菜单样式 -->
+    <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat">
+        <item name="android:colorBackground">#212121</item>
+    </style>
+
 </resources>

@@ -117,6 +117,7 @@ public class BaseFragment<K extends Serializable> extends Fragment {
         if (!injected) {
             x.view().inject(this, this.getView());
         }
+        getDatas(getArguments());
         init(view);
         loadDatas();
     }
@@ -125,7 +126,7 @@ public class BaseFragment<K extends Serializable> extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getDatas(getArguments());
+        //getDatas(getArguments());
     }
 
 

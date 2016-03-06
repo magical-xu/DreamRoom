@@ -9,4 +9,6 @@
     <color name="main_white">#FFFFFF</color>
     <color name="main_black">#000000</color>
     <color name="main_black_grey">#6D6D6D</color>
+
+    <color name="tab_indicator_color">#24b358</color>
 </resources>

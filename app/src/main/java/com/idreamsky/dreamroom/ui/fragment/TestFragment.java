@@ -1,6 +1,5 @@
 package com.idreamsky.dreamroom.ui.fragment;
 
-import android.view.View;
 import android.widget.TextView;
 
 import com.idreamsky.dreamroom.R;
@@ -23,14 +22,14 @@ public class TestFragment extends BaseFragment {
     private TextView textView;
 
     @Override
-    protected void init(View view) {
-        super.init(view);
-        textView.setText(type);
-    }
-
-    @Override
     protected void getDatas(Serializable ks) {
         super.getDatas(ks);
         type = ks.toString();
+    }
+
+    @Override
+    public void loadDatas() {
+        super.loadDatas();
+        textView.setText(type);
     }
 }

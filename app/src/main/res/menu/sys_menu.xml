@@ -3,10 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/id_menu_settings"
+        android:id="@+id/id_menu_share"
         android:orderInCategory="100"
-        android:title="action_settings"
-        app:showAsAction="never" />
+        android:title="分享"
+        android:icon="@drawable/iconfont_fenxiang"
+        app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/id_menu_holder"
+        android:orderInCategory="100"
+        android:title="二维码"
+        app:showAsAction="never" />
 
 </menu>

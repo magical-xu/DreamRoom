@@ -19,6 +19,7 @@ import android.view.View;
 import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.base.BaseActivity;
 import com.idreamsky.dreamroom.base.BaseFragment;
+import com.idreamsky.dreamroom.ui.fragment.TestFragAdapter;
 import com.idreamsky.dreamroom.ui.fragment.TestFragment;
 
 import org.xutils.view.annotation.ContentView;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ContentView(R.layout.activity_main)
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
 
     private static final String TAG = "MainActivity";
 
@@ -53,6 +54,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @ViewInject(R.id.id_nav_menu)
     private NavigationView mNavigationView;
 
+    private TestFragAdapter mFragAdapter;
+
     private long exitTime;//记录退出时间
     private Menu nav_menu;//navigation菜单
     private String[] tab_titles;//TabLayout中的标题
@@ -75,9 +78,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             fragmentList.add(i, bf);
         }
 
+        //设置显示ToolBar
+        setSupportActionBar(mToolbar);
+
         //设置DrawerLayout开关指示器，即左边Icon
         ActionBarDrawerToggle mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
         mToggle.syncState();
+        mDrawerLayout.setDrawerListener(mToggle);
 
         //设置NavigationView顶部布局
         mNavigationView.inflateHeaderView(R.layout.nav_header);
@@ -88,6 +95,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         //设置NavigationView菜单点击监听
         onNavigationViewMenuItemSelected(mNavigationView);
 
+        mFragAdapter = new TestFragAdapter(getSupportFragmentManager(), tab_titles, fragmentList);
+        mViewPager.setAdapter(mFragAdapter);
+        mViewPager.setOffscreenPageLimit(5);
+        mViewPager.addOnPageChangeListener(this);
+
+        mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        // 将TabLayout和ViewPager进行关联，让两者联动起来
+        mTabLayout.setupWithViewPager(mViewPager);
+        // 设置Tablayout的Tab显示ViewPager的适配器中的getPageTitle函数获取到的标题
+        mTabLayout.setTabsFromPagerAdapter(mFragAdapter);
 
     }
 
@@ -123,6 +140,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         return super.onKeyDown(keyCode, event);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.sys_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        //ToolBar上的菜单
+        if (id == R.id.id_menu_share) {
+            shortToast("分享");
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     /**
      * NavigationView菜单点击监听
@@ -188,4 +224,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         nav_menu.findItem(R.id.nav_setting).setChecked(false);
     }
 
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        mToolbar.setTitle(tab_titles[position]);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
 }
