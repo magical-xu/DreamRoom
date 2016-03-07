@@ -19,6 +19,7 @@ import android.view.View;
 import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.base.BaseActivity;
 import com.idreamsky.dreamroom.base.BaseFragment;
+import com.idreamsky.dreamroom.ui.activity.GalleryActivity;
 import com.idreamsky.dreamroom.ui.fragment.TestFragAdapter;
 import com.idreamsky.dreamroom.ui.fragment.TestFragment;
 
@@ -178,25 +179,33 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                     // TODO: 2016/3/5 点击跳转Activity，别忘了过场动画
                     case R.id.nav_recommend:
                         msg = "精彩推荐";
+                        intent.putExtra("data", msg);
+                        startActivity(intent);
                         break;
                     case R.id.nav_gallery:
-                        msg = "家居图库";
+                        startActivity(new Intent(MainActivity.this, GalleryActivity.class));
                         break;
                     case R.id.nav_inspiration:
                         msg = "灵感专题";
+                        intent.putExtra("data", msg);
+                        startActivity(intent);
                         break;
                     case R.id.nav_collection:
                         msg = "我的收藏";
+                        intent.putExtra("data", msg);
+                        startActivity(intent);
                         break;
                     case R.id.nav_about_author:
                         msg = "关于作者";
+                        intent.putExtra("data", msg);
+                        startActivity(intent);
                         break;
                     case R.id.nav_setting:
                         msg = "设置";
+                        intent.putExtra("data", msg);
+                        startActivity(intent);
                         break;
                 }
-                intent.putExtra("data", msg);
-                startActivity(intent);
 
                 unCheckMenu();
                 item.setChecked(true);
