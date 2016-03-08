@@ -72,6 +72,7 @@ public abstract class AbsRecyclerAdapter<T> extends Adapter<ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+
         bindDatas((MyViewHolder)holder, datas.get(position));
     }
 
