@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * RecyclerView的适配器封装
  */
-public abstract class AbsRecyclerAdapter<T> extends Adapter<ViewHolder>{
+public abstract class AbsRecyclerAdapter<T> extends Adapter<ViewHolder> {
 
     private Context context;
     private List<T> datas;
@@ -25,36 +25,40 @@ public abstract class AbsRecyclerAdapter<T> extends Adapter<ViewHolder>{
     private OnItemClickListener onItemClickListener;
     private OnItemLongClickListener onItemLongClickListener;
 
-    public AbsRecyclerAdapter(Context context, int resId){
+    public AbsRecyclerAdapter(Context context, int resId) {
         this.context = context;
         this.datas = new ArrayList();
         this.resId = resId;
     }
 
-    public void setDatas(List<T> datas){
+    public List<T> getDatas() {
+        return datas;
+    }
+
+    public void setDatas(List<T> datas) {
         this.datas = datas;
         this.count = this.datas.size();
         this.notifyDataSetChanged();
     }
 
-    public void addDatas(List<T> datas){
+    public void addDatas(List<T> datas) {
         this.datas.addAll(datas);
         this.notifyItemRangeInserted(this.count, datas.size());
         this.count = this.datas.size();
     }
 
-    public void addDatas(List<T> datas, int index){
+    public void addDatas(List<T> datas, int index) {
         this.datas.addAll(index, datas);
         this.notifyItemRangeInserted(index, datas.size());
         this.count = this.datas.size();
     }
 
-    public void addData(T data, int index){
+    public void addData(T data, int index) {
         this.datas.add(index, data);
         this.notifyItemInserted(index);
     }
 
-    public void removeData(int index){
+    public void removeData(int index) {
         this.datas.remove(index);
         this.notifyItemRemoved(index);
     }
@@ -73,10 +77,10 @@ public abstract class AbsRecyclerAdapter<T> extends Adapter<ViewHolder>{
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        bindDatas((MyViewHolder)holder, datas.get(position),position);
+        bindDatas((MyViewHolder) holder, datas.get(position), position);
     }
 
-    public abstract void bindDatas(MyViewHolder holder, T data,int position);
+    public abstract void bindDatas(MyViewHolder holder, T data, int position);
 
     /**
      * 自定义ViewHolder
@@ -92,9 +96,9 @@ public abstract class AbsRecyclerAdapter<T> extends Adapter<ViewHolder>{
             this.layoutView.setOnLongClickListener(this);
         }
 
-        public View getView(int id){
+        public View getView(int id) {
             View view;
-            if(mapCache.containsKey(id)){
+            if (mapCache.containsKey(id)) {
                 view = mapCache.get(id);
             } else {
                 view = layoutView.findViewById(id);
@@ -105,25 +109,25 @@ public abstract class AbsRecyclerAdapter<T> extends Adapter<ViewHolder>{
 
         @Override
         public void onClick(View v) {
-            if(onItemClickListener != null){
+            if (onItemClickListener != null) {
                 onItemClickListener.onItemClick(v, getAdapterPosition());
             }
         }
 
         @Override
         public boolean onLongClick(View v) {
-            if(onItemLongClickListener != null){
+            if (onItemLongClickListener != null) {
                 onItemLongClickListener.onItemLongClick(v, getAdapterPosition());
             }
             return false;
         }
     }
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onItemClick(View v, int position);
     }
 
-    public interface OnItemLongClickListener{
+    public interface OnItemLongClickListener {
         void onItemLongClick(View v, int position);
     }
 

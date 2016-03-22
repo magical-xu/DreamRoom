@@ -16,6 +16,7 @@ import com.idreamsky.dreamroom.adapter.GalleryAdapter;
 import com.idreamsky.dreamroom.base.AbsRecyclerAdapter;
 import com.idreamsky.dreamroom.base.BaseActivity;
 import com.idreamsky.dreamroom.model.GalleryEntity;
+import com.idreamsky.dreamroom.ui.custum.ImageDialog;
 import com.idreamsky.dreamroom.util.Constants;
 import com.idreamsky.dreamroom.util.JsonUtil;
 import com.idreamsky.dreamroom.util.VolleyUtil;
@@ -42,6 +43,8 @@ public class GalleryActivity extends BaseActivity implements SwipeRefreshLayout.
     private RecyclerView recyclerView;
 
     private List<GalleryEntity.GalleryModel> data;
+    private List<GalleryEntity.GalleryModel> allDatas;
+
     private GalleryAdapter mAdapter;
     private static int SPAN_COUNT = 2;
     private static int STATE_LOAD_REFRESH = 0;
@@ -55,7 +58,7 @@ public class GalleryActivity extends BaseActivity implements SwipeRefreshLayout.
 
             if (msg.what == 1) {
                 mCurrentNum++;
-                loadData(Constants.Gallery.GALLERY_ALL_COLOR_URL,STATE_LOAD_MORE);
+                loadData(Constants.Gallery.GALLERY_ALL_COLOR_URL, STATE_LOAD_MORE);
             }
         }
     };
@@ -156,5 +159,8 @@ public class GalleryActivity extends BaseActivity implements SwipeRefreshLayout.
     public void onItemClick(View v, int position) {
         // TODO: 2016/3/20 大图查看模式
         shortToast("" + position);
+        allDatas = mAdapter.getDatas();
+        ImageDialog dialog = new ImageDialog(this, allDatas, position);
+        dialog.show();
     }
 }
