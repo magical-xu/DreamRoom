@@ -3,10 +3,13 @@ package com.idreamsky.dreamroom.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.model.GalleryEntity.GalleryModel;
 import com.idreamsky.dreamroom.util.UniversalUtil;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -29,7 +32,7 @@ public class DialogImageAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return mDatas.size();
+        return mDatas != null ? mDatas.size() : 0;
     }
 
     @Override
@@ -40,8 +43,15 @@ public class DialogImageAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
 
-        ImageView imageView = new ImageView(mContext);
-        UniversalUtil.displayImage(mDatas.get(position).pic, imageView, new ImageLoadingListener() {
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View convertView = inflater.inflate(R.layout.item_dialog_framlayout, container, false);
+
+        ViewHolder holder = new ViewHolder();
+
+        holder.iv_item = (ImageView) convertView.findViewById(R.id.id_item_dialog_iv);
+        String item_url = mDatas.get(position).pic;
+
+        UniversalUtil.displayImage(item_url, holder.iv_item, new ImageLoadingListener() {
             @Override
             public void onLoadingStarted(String imageUri, View view) {
 
@@ -62,14 +72,17 @@ public class DialogImageAdapter extends PagerAdapter {
 
             }
         });
-        container.addView(imageView,position);
+        container.addView(convertView);
 
-        return container.getChildAt(position);
+        return convertView;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        //super.destroyItem(container, position, object);
-        container.removeView((ImageView) object);
+        container.removeView((FrameLayout) object);
+    }
+
+    class ViewHolder {
+        public ImageView iv_item;
     }
 }

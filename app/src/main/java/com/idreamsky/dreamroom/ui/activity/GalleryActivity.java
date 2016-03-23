@@ -158,9 +158,7 @@ public class GalleryActivity extends BaseActivity implements SwipeRefreshLayout.
     @Override
     public void onItemClick(View v, int position) {
         // TODO: 2016/3/20 大图查看模式
-        shortToast("" + position);
         allDatas = mAdapter.getDatas();
-        ImageDialog dialog = new ImageDialog(this, allDatas, position);
-        dialog.show();
+        new ImageDialog(this, allDatas, position).show();
     }
 }
