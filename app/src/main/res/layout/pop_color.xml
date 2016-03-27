@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/pop_background"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/id_color_all"
+        style="@style/pop_kind_text"
+        android:text="全部"/>
+
+    <TextView
+        style="@style/pop_divider"/>
+
+    <TextView
+        android:id="@+id/id_green"
+        style="@style/pop_kind_text"
+        android:text="绿色"/>
+
+    <TextView
+        style="@style/pop_divider"/>
+
+    <TextView
+        android:id="@+id/id_pink"
+        style="@style/pop_kind_text"
+        android:text="粉色"/>
+
+    <TextView
+        style="@style/pop_divider"/>
+
+    <TextView
+        android:id="@+id/id_red"
+        style="@style/pop_kind_text"
+        android:text="红色"/>
+
+    <TextView
+        style="@style/pop_divider"/>
+
+    <TextView
+        android:id="@+id/id_yellow"
+        style="@style/pop_kind_text"
+        android:layout_marginBottom="@dimen/dr_space_eight"
+        android:text="黄色"/>
+
+</LinearLayout>

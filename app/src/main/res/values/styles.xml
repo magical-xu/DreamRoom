@@ -22,4 +22,26 @@
         <item name="android:colorBackground">#212121</item>
     </style>
 
+    <style name="popwin_anim_style">
+        <item name="android:windowEnterAnimation">@anim/pop_show</item>
+        <item name="android:windowExitAnimation">@anim/pop_hide</item>
+    </style>
+
+    <style name="pop_kind_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/dr_space_eight</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textSize">@dimen/dr_text_one_six</item>
+    </style>
+
+    <style name="pop_divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">- - - - - - - -</item>
+    </style>
+
 </resources>

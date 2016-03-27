@@ -18,7 +18,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/3/22.
+ * Created by magical on 2016/3/22.
  */
 public class DialogImageAdapter extends PagerAdapter {
 

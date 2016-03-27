@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/pop_background"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/id_space_all"
+        style="@style/pop_kind_text"
+        android:text="全部"/>
+
+    <TextView
+        style="@style/pop_divider"/>
+
+    <TextView
+        android:id="@+id/id_bedroom"
+        style="@style/pop_kind_text"
+        android:text="卧室"/>
+
+    <TextView
+        style="@style/pop_divider"/>
+
+    <TextView
+        android:id="@+id/id_livingroom"
+        style="@style/pop_kind_text"
+        android:text="客厅"/>
+
+    <TextView
+        style="@style/pop_divider"/>
+
+    <TextView
+        android:id="@+id/id_diningroom"
+        style="@style/pop_kind_text"
+        android:text="餐厅"/>
+
+    <TextView
+        style="@style/pop_divider"/>
+
+    <TextView
+        android:id="@+id/id_bathroom"
+        style="@style/pop_kind_text"
+        android:layout_marginBottom="@dimen/dr_space_eight"
+        android:text="浴室"/>
+
+</LinearLayout>

@@ -25,7 +25,7 @@ public class BaseActivity extends AppCompatActivity implements ConstantString, T
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        x.view().inject(this);//把当前的activity注册进xutils
+        x.view().inject(this);
         AppContext.mAMS.addActivity(this);
         fragmentManager = getSupportFragmentManager();
 

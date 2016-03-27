@@ -9,5 +9,21 @@
     <dimen name="dr_text_one_eight">18sp</dimen>
     <dimen name="dr_text_two_zero">20sp</dimen>
 
+    <!-- 间距规范 -->
+    <dimen name="dr_space_six">6dp</dimen>
+    <dimen name="dr_space_seven">7dp</dimen>
+    <dimen name="dr_space_eight">8dp</dimen>
+    <dimen name="dr_space_nine">9dp</dimen>
+    <dimen name="dr_space_ten">10dp</dimen>
+    <dimen name="dr_space_one_two">12dp</dimen>
+    <dimen name="dr_space_one_four">14dp</dimen>
+    <dimen name="dr_space_one_six">16dp</dimen>
+    <dimen name="dr_space_one_eight">18dp</dimen>
+    <dimen name="dr_space_two_zero">20dp</dimen>
+    <dimen name="dr_space_two_five">25dp</dimen>
+    <dimen name="dr_space_two_eight">28dp</dimen>
+    <dimen name="dr_space_three_zero">30dp</dimen>
+    <dimen name="dr_space_four_zero">40dp</dimen>
+
 
 </resources>

@@ -4,6 +4,16 @@
     android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimary">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/dr_space_six"
+        android:onClick="goBack"
+        android:scaleType="fitCenter"
+        android:src="@drawable/icon_back" />
+
     <TextView
         android:id="@+id/id_common_title"
         android:layout_width="wrap_content"

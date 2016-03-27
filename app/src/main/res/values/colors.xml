@@ -14,4 +14,8 @@
     <color name="refresh_second_color">#c1d239</color>
 
     <color name="tab_indicator_color">#24b358</color>
+
+    <color name="pop_background">#9ce4b9</color>
+    <color name="pop_button">#dc9999</color>
+
 </resources>
