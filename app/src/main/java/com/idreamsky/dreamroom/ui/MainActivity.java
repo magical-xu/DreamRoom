@@ -20,6 +20,7 @@ import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.base.BaseActivity;
 import com.idreamsky.dreamroom.base.BaseFragment;
 import com.idreamsky.dreamroom.ui.activity.GalleryActivity;
+import com.idreamsky.dreamroom.ui.fragment.GeomancyFragment;
 import com.idreamsky.dreamroom.ui.fragment.TestFragAdapter;
 import com.idreamsky.dreamroom.ui.fragment.TestFragment;
 
@@ -30,7 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ContentView(R.layout.activity_main)
-public class MainActivity extends BaseActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener, ViewPager
+        .OnPageChangeListener {
 
     private static final String TAG = "MainActivity";
 
@@ -68,14 +70,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
         //获取tab标题
         tab_titles = getResources().getStringArray(R.array.tab_titles);
+        BaseFragment bf;
 
         //初始化Fragment集合
         fragmentList = new ArrayList<>();
         for (int i = 0; i < tab_titles.length; i++) {
             Bundle bundle = new Bundle();
             String type = tab_titles[i];
-            BaseFragment bf = BaseFragment.getInstance(TestFragment.class);
-            bf.bindDatas(type);
+            if (i == tab_titles.length - 1) {
+                bf = BaseFragment.getInstance(GeomancyFragment.class);
+            } else {
+                bf = BaseFragment.getInstance(TestFragment.class);
+                bf.bindDatas(type);
+            }
+
             fragmentList.add(i, bf);
         }
 
@@ -83,7 +91,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         setSupportActionBar(mToolbar);
 
         //设置DrawerLayout开关指示器，即左边Icon
-        ActionBarDrawerToggle mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
+        ActionBarDrawerToggle mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar,
+                R.string.drawer_open, R.string.drawer_close);
         mToggle.syncState();
         mDrawerLayout.setDrawerListener(mToggle);
 
@@ -106,6 +115,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mTabLayout.setupWithViewPager(mViewPager);
         // 设置Tablayout的Tab显示ViewPager的适配器中的getPageTitle函数获取到的标题
         mTabLayout.setTabsFromPagerAdapter(mFragAdapter);
+
 
     }
 
@@ -168,7 +178,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
      */
     public void onNavigationViewMenuItemSelected(final NavigationView nav) {
 
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView
+                .OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
 

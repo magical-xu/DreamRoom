@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".ui.TestActivity"/>
         <activity android:name=".ui.activity.GalleryActivity"/>
+        <activity android:name=".ui.activity.GeomancyDetailActivity"/>
     </application>
 
 </manifest>

@@ -24,6 +24,8 @@
     <dimen name="dr_space_two_eight">28dp</dimen>
     <dimen name="dr_space_three_zero">30dp</dimen>
     <dimen name="dr_space_four_zero">40dp</dimen>
+    <dimen name="dr_space_five_zero">50dp</dimen>
 
+    <dimen name="dr_space_list_padding">@dimen/dr_space_six</dimen>
 
 </resources>

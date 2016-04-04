@@ -12,10 +12,14 @@
 
     <color name="refresh_first_color">#25cc15</color>
     <color name="refresh_second_color">#c1d239</color>
+    <color name="item_view_divider">#a9b7b7</color>
 
     <color name="tab_indicator_color">#24b358</color>
 
     <color name="pop_background">#9ce4b9</color>
     <color name="pop_button">#dc9999</color>
+
+    <color name="item_text_title">#292b2b</color>
+    <color name="item_text_other">#a9b7b7</color>
 
 </resources>

@@ -7,4 +7,7 @@ public interface ConstantString {
 
     String LOAD_FAILED = "加载失败( ▼-▼ )";
     String LOAD_NO_NETWORK = "无网络，当前为缓存数据";
+
+   int STATE_LOAD_REFRESH = 0;
+   int STATE_LOAD_MORE = 1;
 }
