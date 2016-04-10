@@ -1,7 +1,6 @@
 package com.idreamsky.dreamroom.ui;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
@@ -20,6 +19,7 @@ import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.base.BaseActivity;
 import com.idreamsky.dreamroom.base.BaseFragment;
 import com.idreamsky.dreamroom.ui.activity.GalleryActivity;
+import com.idreamsky.dreamroom.ui.fragment.BrandShowFragment;
 import com.idreamsky.dreamroom.ui.fragment.GeomancyFragment;
 import com.idreamsky.dreamroom.ui.fragment.TestFragAdapter;
 import com.idreamsky.dreamroom.ui.fragment.TestFragment;
@@ -75,10 +75,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         //初始化Fragment集合
         fragmentList = new ArrayList<>();
         for (int i = 0; i < tab_titles.length; i++) {
-            Bundle bundle = new Bundle();
             String type = tab_titles[i];
             if (i == tab_titles.length - 1) {
                 bf = BaseFragment.getInstance(GeomancyFragment.class);
+            } else if (i == tab_titles.length - 2) {
+                bf = BaseFragment.getInstance(BrandShowFragment.class);
             } else {
                 bf = BaseFragment.getInstance(TestFragment.class);
                 bf.bindDatas(type);

@@ -1,7 +1,7 @@
 package com.idreamsky.dreamroom.util;
 
 /**
- * 常量接口
+ * 网络请求URL
  */
 public interface Constants {
 
@@ -10,17 +10,35 @@ public interface Constants {
      */
     interface Gallery {
 
+        String BASE_SPACE = "http://ihome.cmfmobile.com:8080/sp/custom/searchpic" +
+                ".do?__client__=android&__umeng_channel__=myapp";
+
+        String BASE_COLOR = "http://ihome.cmfmobile.com:8080/sp/custom/searchpicByColour" +
+                ".do?__client__=android&__umeng_channel__=myapp";
+
         //颜色系列
-        String GALLERY_ALL_COLOR_URL = "http://ihome.cmfmobile" +
-                ".com:8080/sp/custom/searchpicByColour" +
-                ".do?__client__=android&__umeng_channel__=myapp&tags=&pn=";
-        String GALLERY_BEIGE_URL = "http://ihome.cmfmobile.com:8080/sp/custom/searchpicByColour" +
-                ".do?__client__=android&__umeng_channel__=myapp&tags=%E7%B1%B3%E8%89%B2&pn=";
-        String GALLERY_PINK_URL = "http://ihome.cmfmobile.com:8080/sp/custom/searchpicByColour" +
-                ".do?__client__=android&__umeng_channel__=myapp&tags=%E7%B2%89%E8%89%B2&pn=";
+        String ALL_COLOR_URL = BASE_COLOR + "&tags=&pn=";
+        String GREEN_URL = BASE_COLOR + "&tags=%E7%BB%BF%E8%89%B2&pn=";//绿色
+        String PINK_URL = BASE_COLOR + "&tags=%E7%B2%89%E8%89%B2&pn=";//粉色
+        String RED_URL = BASE_COLOR + "&tags=%E7%BA%A2%E8%89%B2&pn=";//红色
+        String YELLOW_URL = BASE_COLOR + "&tags=%E9%BB%84%E8%89%B2&pn=";//黄色
 
         //空间系列
-        String GALLERY_ALL_SPACE_URL = "";
+        String ALL_SPACE_URL = BASE_SPACE + "&type=all&pn=";//全部
+        String BEDROOM_URL = BASE_SPACE + "&type=bedroom&pn=";//卧室
+        String LIVING_URL = BASE_SPACE + "&type=living&pn=";//客厅
+        String DINING_URL = BASE_SPACE + "&type=dining&pn=";//餐厅
+        String BATH_URL = BASE_SPACE + "&type=bath&pn=";//浴室
+    }
+
+    interface Brand{
+
+        //品牌展厅首页
+        String BRAND_HOME_URL = "http://ihome.cmfmobile.com:8080/sp/custom/showBrand.do?__client__=android&__umeng_channel__=myapp";
+
+        String BRAND_BASE_URL = "http://ihome.cmfmobile.com:8080/sp/custom/showProductClassByBrand.do?__client__=android&__umeng_channel__=myapp&brand=";
+
+        String BRAND_FURNITURE_BASE_URL = "http://ihome.cmfmobile.com:8080/sp/custom/getProduct.do?__client__=android&__umeng_channel__=myapp&__read_loc_data__=false";
     }
 
     /**

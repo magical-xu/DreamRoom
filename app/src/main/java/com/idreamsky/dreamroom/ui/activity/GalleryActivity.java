@@ -20,16 +20,17 @@ import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.adapter.GalleryAdapter;
 import com.idreamsky.dreamroom.base.AbsRecyclerAdapter;
 import com.idreamsky.dreamroom.base.BaseActivity;
+import com.idreamsky.dreamroom.constant.ConstantString;
 import com.idreamsky.dreamroom.model.GalleryEntity;
 import com.idreamsky.dreamroom.ui.custum.ImageDialog;
 import com.idreamsky.dreamroom.util.Constants;
 import com.idreamsky.dreamroom.util.JsonUtil;
+import com.idreamsky.dreamroom.util.L;
 import com.idreamsky.dreamroom.util.VolleyUtil;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -69,6 +70,7 @@ public class GalleryActivity extends BaseActivity implements SwipeRefreshLayout
     private int lastVisibleItem;
     private View convertView;
     private PopupWindow mWindow;
+    private String mCurrentUrl;
 
     private Handler handler = new Handler() {
         @Override
@@ -76,7 +78,7 @@ public class GalleryActivity extends BaseActivity implements SwipeRefreshLayout
 
             if (msg.what == 1) {
                 mCurrentNum++;
-                loadData(Constants.Gallery.GALLERY_ALL_COLOR_URL, STATE_LOAD_MORE);
+                loadData(mCurrentUrl, STATE_LOAD_MORE);
             }
         }
     };
@@ -93,9 +95,6 @@ public class GalleryActivity extends BaseActivity implements SwipeRefreshLayout
 
         mAdapter = new GalleryAdapter(this, R.layout.item_card_img);
 
-        //StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(SPAN_COUNT,
-        // StaggeredGridLayoutManager
-        // .VERTICAL);
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, SPAN_COUNT);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setHasFixedSize(true);
@@ -110,7 +109,6 @@ public class GalleryActivity extends BaseActivity implements SwipeRefreshLayout
                 if (newState == RecyclerView.SCROLL_STATE_IDLE
                         && lastVisibleItem + 1 == mAdapter.getItemCount()) {
                     swipeRefreshLayout.setRefreshing(true);
-                    // 此处在现实项目中，请换成网络请求数据代码，sendRequest .....
                     handler.sendEmptyMessage(1);
                 }
             }
@@ -132,12 +130,15 @@ public class GalleryActivity extends BaseActivity implements SwipeRefreshLayout
     public void loadDatas() {
 
         mCurrentNum = 1;
-        loadData(Constants.Gallery.GALLERY_ALL_COLOR_URL, STATE_LOAD_REFRESH);
+        mCurrentUrl = Constants.Gallery.ALL_SPACE_URL;
+        loadData(mCurrentUrl, STATE_LOAD_REFRESH);
 
     }
 
     private void loadData(String url, int state) {
+
         String newUrl = url + mCurrentNum;
+        L.d(newUrl);
         final int mode = state;
 
         VolleyUtil.requestString(newUrl, new VolleyUtil.OnRequest() {
@@ -156,7 +157,7 @@ public class GalleryActivity extends BaseActivity implements SwipeRefreshLayout
 
             @Override
             public void errorResponse(String url, VolleyError error) {
-                shortToast("加载失败");
+                shortToast(ConstantString.LOAD_FAILED);
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -165,23 +166,11 @@ public class GalleryActivity extends BaseActivity implements SwipeRefreshLayout
     @Override
     public void onRefresh() {
         mCurrentNum = 1;
-        loadData(Constants.Gallery.GALLERY_ALL_COLOR_URL, STATE_LOAD_REFRESH);
-    }
-
-    /**
-     * 生成随机高度
-     */
-    private List<Integer> generateRandomHeight(int size) {
-        List<Integer> randomList = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            randomList.add((int) (Math.random() * 300) + 200);
-        }
-        return randomList;
+        loadData(mCurrentUrl, STATE_LOAD_REFRESH);
     }
 
     @Override
     public void onItemClick(View v, int position) {
-        // TODO: 2016/3/20 大图查看模式
         allDatas = mAdapter.getDatas();
         new ImageDialog(this, allDatas, position).show();
     }
@@ -200,7 +189,8 @@ public class GalleryActivity extends BaseActivity implements SwipeRefreshLayout
         } else {
             String url = (String) v.getTag();
             mCurrentNum = 1;
-            loadData(url, STATE_LOAD_REFRESH);
+            mCurrentUrl = url;
+            loadData(mCurrentUrl, STATE_LOAD_REFRESH);
             mWindow.dismiss();
         }
 
@@ -244,8 +234,11 @@ public class GalleryActivity extends BaseActivity implements SwipeRefreshLayout
         TextView red = (TextView) convertView.findViewById(R.id.id_red);
         TextView yellow = (TextView) convertView.findViewById(R.id.id_yellow);
 
-        cl_all.setTag(Constants.Gallery.GALLERY_ALL_COLOR_URL);
-        pink.setTag(Constants.Gallery.GALLERY_PINK_URL);
+        cl_all.setTag(Constants.Gallery.ALL_COLOR_URL);
+        green.setTag(Constants.Gallery.GREEN_URL);
+        pink.setTag(Constants.Gallery.PINK_URL);
+        red.setTag(Constants.Gallery.RED_URL);
+        yellow.setTag(Constants.Gallery.YELLOW_URL);
 
         cl_all.setOnClickListener(this);
         green.setOnClickListener(this);
@@ -260,6 +253,12 @@ public class GalleryActivity extends BaseActivity implements SwipeRefreshLayout
         TextView livingroom = (TextView) convertView.findViewById(R.id.id_livingroom);
         TextView diningroom = (TextView) convertView.findViewById(R.id.id_diningroom);
         TextView bathroom = (TextView) convertView.findViewById(R.id.id_bathroom);
+
+        sp_all.setTag(Constants.Gallery.ALL_SPACE_URL);
+        bedroom.setTag(Constants.Gallery.BEDROOM_URL);
+        livingroom.setTag(Constants.Gallery.LIVING_URL);
+        diningroom.setTag(Constants.Gallery.DINING_URL);
+        bathroom.setTag(Constants.Gallery.BATH_URL);
 
         sp_all.setOnClickListener(this);
         bedroom.setOnClickListener(this);
