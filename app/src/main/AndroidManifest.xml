@@ -25,6 +25,8 @@
         <activity android:name=".ui.activity.GeomancyDetailActivity"/>
         <activity android:name=".ui.activity.BrandTypeListActivity"/>
         <activity android:name=".ui.activity.BrandFurnitureActivity"/>
+        <activity android:name=".ui.activity.BrandProductActivity"/>
+        <activity android:name=".ui.activity.WebContentActivity"/>
     </application>
 
 </manifest>

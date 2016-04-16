@@ -9,6 +9,7 @@
     <color name="main_white">#FFFFFF</color>
     <color name="main_black">#000000</color>
     <color name="main_black_grey">#6D6D6D</color>
+    <color name="main_red">#FF0000</color>
 
     <color name="refresh_first_color">#25cc15</color>
     <color name="refresh_second_color">#c1d239</color>

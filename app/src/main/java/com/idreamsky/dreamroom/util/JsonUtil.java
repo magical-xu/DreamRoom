@@ -2,6 +2,7 @@ package com.idreamsky.dreamroom.util;
 
 import com.google.gson.Gson;
 import com.idreamsky.dreamroom.model.BrandClazz;
+import com.idreamsky.dreamroom.model.BrandFurnitureDetail;
 import com.idreamsky.dreamroom.model.BrandHomeEntity;
 import com.idreamsky.dreamroom.model.BrandHomeEntity.BrandHomeModel;
 import com.idreamsky.dreamroom.model.GalleryEntity;
@@ -88,6 +89,27 @@ public class JsonUtil {
             for (int i = 0; i < jsonArray.length(); i++) {
                 BrandClazz one = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),
                         BrandClazz.class);
+                list.add(one);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    /**
+     * 解析品牌展厅 - 具体家具
+     *
+     * @return
+     */
+    public static List<BrandFurnitureDetail> resolveBrandDetail(String json) {
+        List<BrandFurnitureDetail> list = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray jsonArray = jsonObject.optJSONArray("data");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                BrandFurnitureDetail one = new Gson().fromJson(jsonArray.getJSONObject(i)
+                        .toString(), BrandFurnitureDetail.class);
                 list.add(one);
             }
         } catch (JSONException e) {

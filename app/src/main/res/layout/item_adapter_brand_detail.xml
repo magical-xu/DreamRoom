@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/gridview_divider_bg"
+              android:orientation="vertical"
+              android:padding="@dimen/dr_space_list_padding">
+
+    <ImageView
+        android:id="@+id/id_item_brand_detail_iv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dr_space_one_zero_zero"
+        android:scaleType="fitXY"/>
+
+    <com.idreamsky.dreamroom.ui.custum.AutoScrollTextView
+        android:focusable="false"
+        android:id="@+id/id_item_brand_detail_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dr_space_one_eight"
+        android:layout_marginTop="@dimen/dr_space_six"
+        android:contentDescription="@string/furniture_detail_name"
+        android:singleLine="true"
+        android:inputType="text"
+        android:textSize="@dimen/dr_text_one_six"/>
+
+    <TextView
+        android:id="@+id/id_item_brand_detail_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dr_space_six"
+        android:contentDescription="@string/furniture_detail_price"
+        android:focusable="false"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="@color/main_red"
+        android:textSize="@dimen/dr_text_one_six"/>
+
+</LinearLayout>

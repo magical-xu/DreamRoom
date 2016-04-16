@@ -11,11 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <GridView
+        <android.support.v7.widget.RecyclerView
+            android:listSelector="@android:color/transparent"
             android:id="@+id/frag_furniture_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:numColumns="2"
             android:paddingLeft="@dimen/dr_space_list_padding"
             android:paddingRight="@dimen/dr_space_list_padding"/>
 

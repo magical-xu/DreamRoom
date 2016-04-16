@@ -53,4 +53,6 @@ public interface Constants {
         String GEOMANCY_DETAIL_URL = "http://appapi.17house.com/NewsApi" +
                 ".php?version=1&relatedNum=3&action=newsDetail&page=1&model=android&newsId=";
     }
+
+
 }

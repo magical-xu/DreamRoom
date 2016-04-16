@@ -1,6 +1,11 @@
 package com.idreamsky.dreamroom.util;
 
-import java.util.HashMap;
+import android.text.TextUtils;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by magical on 2016/4/10.
@@ -8,13 +13,42 @@ import java.util.HashMap;
  */
 public class UrlUtil {
 
-    public static String getUrl(String base, HashMap<String, String> param) {
-
-        StringBuffer sb = new StringBuffer(base);
-        if (null != param) {
-
+    //中文编码一次utf-8
+    public static String chineseEncode(String str) {
+        if (TextUtils.isEmpty(str)) {
+            return "";
         }
 
-        return sb.toString();
+        String utf8String = null;
+        try {
+            utf8String = URLEncoder.encode(str, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return utf8String;
+    }
+
+    /**
+     * 将map参数转成String参数 并转一次utf8
+     *
+     * @param param
+     * @return
+     */
+    public static String getMapString(Map<String, String> param) {
+        //拼接到 url后
+        StringBuffer stringBuffer = new StringBuffer();
+        Set<String> keys = param.keySet();
+        //int i = 0;
+
+        for (String key : keys) {
+            //if (i > 0) {
+            stringBuffer.append("&");
+            //}
+            //进行一次utf8
+            String value = chineseEncode(param.get(key));
+            stringBuffer.append(key + "=" + value);
+            //i++;
+        }
+        return stringBuffer.toString();
     }
 }

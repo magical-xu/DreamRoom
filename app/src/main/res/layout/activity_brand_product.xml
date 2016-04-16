@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/common_title"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dr_space_one_two"
+            android:paddingRight="@dimen/dr_space_one_two">
+
+            <ImageView
+                android:id="@+id/id_product_iv"
+                android:layout_width="@dimen/dr_space_two_zero_zero"
+                android:layout_height="@dimen/dr_space_two_zero_zero"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dr_space_eight"/>
+
+            <TextView
+                android:id="@+id/id_product_brand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dr_space_eight"
+                android:text="及木"
+                android:textColor="@color/refresh_first_color"
+                android:textSize="@dimen/dr_text_two_zero"/>
+
+            <TextView
+                android:id="@+id/id_product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dr_space_eight"
+                android:text="北欧设计客厅"
+                android:textColor="@color/main_blue_dark"
+                android:textSize="@dimen/dr_text_one_six"/>
+
+            <TextView
+                android:id="@+id/id_product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dr_space_eight"
+                android:text="$ 1000"
+                android:textColor="@color/main_red"
+                android:textSize="@dimen/dr_text_one_eight"/>
+
+            <TextView
+                android:id="@+id/id_product_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dr_space_eight"
+                android:text="666啊"
+                android:textColor="@color/refresh_second_color"
+                android:textSize="@dimen/dr_text_one_six"/>
+
+            <Button
+                android:id="@+id/id_product_jump"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dr_space_eight"
+                android:background="@drawable/common_btn_bg"
+                android:text="@string/furniture_go_jump"
+                android:textColor="@color/main_white"
+                android:textSize="@dimen/dr_text_one_six"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

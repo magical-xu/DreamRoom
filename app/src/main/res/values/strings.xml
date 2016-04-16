@@ -14,6 +14,9 @@
 
     <string name="header_author_name">magical</string>
     <string name="header_author_url">https://github.com/magical-xu</string>
+    <string name="furniture_detail_name">家具名称</string>
+    <string name="furniture_detail_price">家具价格</string>
+    <string name="furniture_go_jump">去商场看看,好不啦？</string>
 
 
 </resources>
