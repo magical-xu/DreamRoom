@@ -17,7 +17,7 @@ import java.util.Map;
  */
 public abstract class AbsRecyclerAdapter<T> extends Adapter<ViewHolder> {
 
-    private Context context;
+    protected Context context;
     private List<T> datas;
     private int count;
     private int resId;

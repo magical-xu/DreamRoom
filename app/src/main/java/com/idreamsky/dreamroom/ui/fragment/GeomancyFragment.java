@@ -127,6 +127,7 @@ public class GeomancyFragment extends BaseFragment implements AdapterView.OnItem
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int
             totalItemCount) {
+        // TODO: 2016/4/17 这么判断是有问题的
         if (firstVisibleItem + visibleItemCount == totalItemCount) {
             srlayout.setRefreshing(true);
             mHandler.sendEmptyMessage(1);

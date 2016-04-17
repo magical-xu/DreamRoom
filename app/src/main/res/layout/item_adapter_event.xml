@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dr_space_list_padding">
+
+    <ImageView
+        android:id="@+id/id_item_event_img"
+        android:layout_width="@dimen/dr_space_item_img_common"
+        android:layout_height="@dimen/dr_space_item_img_common"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dr_space_six"
+        android:layout_toRightOf="@id/id_item_event_img"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_event_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dr_space_six"
+            android:layout_marginTop="@dimen/dr_space_six"
+            android:singleLine="true"
+            android:textSize="@dimen/dr_text_one_eight"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/item_event_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dr_space_six"
+            android:layout_marginTop="@dimen/dr_space_six"
+            android:singleLine="true"
+            android:textColor="@color/main_black_grey"
+            android:textSize="@dimen/dr_text_one_six"/>
+
+        <TextView
+            android:id="@+id/item_event_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dr_space_six"
+            android:layout_marginTop="@dimen/dr_space_six"
+            android:singleLine="true"
+            android:textColor="@color/main_black_grey"
+            android:textSize="@dimen/dr_text_one_six"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

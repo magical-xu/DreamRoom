@@ -17,12 +17,13 @@ import android.view.View;
 
 import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.base.BaseActivity;
-import com.idreamsky.dreamroom.base.BaseFragment;
 import com.idreamsky.dreamroom.ui.activity.GalleryActivity;
 import com.idreamsky.dreamroom.ui.fragment.BrandShowFragment;
+import com.idreamsky.dreamroom.ui.fragment.DecorationFragment;
+import com.idreamsky.dreamroom.ui.fragment.EventFragment;
 import com.idreamsky.dreamroom.ui.fragment.GeomancyFragment;
+import com.idreamsky.dreamroom.ui.fragment.HomeFragment;
 import com.idreamsky.dreamroom.ui.fragment.TestFragAdapter;
-import com.idreamsky.dreamroom.ui.fragment.TestFragment;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -64,29 +65,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private String[] tab_titles;//TabLayout中的标题
     private List<Fragment> fragmentList;//ViewPager中的Fragment
 
+    private HomeFragment mHomeFragment;//首页
+    private DecorationFragment mDecorationFragment;//家装公司
+    private EventFragment mEventFragment;//优选活动
+    private BrandShowFragment mBrandShowFragment;//品牌展厅
+    private GeomancyFragment mGeomancyFragment;//装修风水
+
 
     @Override
     public void init() {
 
         //获取tab标题
         tab_titles = getResources().getStringArray(R.array.tab_titles);
-        BaseFragment bf;
-
-        //初始化Fragment集合
-        fragmentList = new ArrayList<>();
-        for (int i = 0; i < tab_titles.length; i++) {
-            String type = tab_titles[i];
-            if (i == tab_titles.length - 1) {
-                bf = BaseFragment.getInstance(GeomancyFragment.class);
-            } else if (i == tab_titles.length - 2) {
-                bf = BaseFragment.getInstance(BrandShowFragment.class);
-            } else {
-                bf = BaseFragment.getInstance(TestFragment.class);
-                bf.bindDatas(type);
-            }
-
-            fragmentList.add(i, bf);
-        }
+        initFragments();
 
         //设置显示ToolBar
         setSupportActionBar(mToolbar);
@@ -116,18 +107,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mTabLayout.setupWithViewPager(mViewPager);
         // 设置Tablayout的Tab显示ViewPager的适配器中的getPageTitle函数获取到的标题
         mTabLayout.setTabsFromPagerAdapter(mFragAdapter);
-
-
     }
 
     @Override
     public void loadDatas() {
-
     }
 
     @Override
     public void onClick(View v) {
-
     }
 
     @Override
@@ -225,6 +212,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 return true;
             }
         });
+    }
+
+    /**
+     * 初始化导航Fragment
+     */
+    private void initFragments() {
+        //初始化Fragment集合
+        fragmentList = new ArrayList<>();
+        mHomeFragment = new HomeFragment();
+        mDecorationFragment = new DecorationFragment();
+        mEventFragment = new EventFragment();
+        mBrandShowFragment = new BrandShowFragment();
+        mGeomancyFragment = new GeomancyFragment();
+
+        fragmentList.add(mHomeFragment);
+        fragmentList.add(mDecorationFragment);
+        fragmentList.add(mEventFragment);
+        fragmentList.add(mBrandShowFragment);
+        fragmentList.add(mGeomancyFragment);
     }
 
     /**

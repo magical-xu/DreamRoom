@@ -31,5 +31,6 @@
     <dimen name="dr_space_four_zero_zero">400dp</dimen>
 
     <dimen name="dr_space_list_padding">@dimen/dr_space_six</dimen>
+    <dimen name="dr_space_item_img_common">@dimen/dr_space_five_zero</dimen>
 
 </resources>

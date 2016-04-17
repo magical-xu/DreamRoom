@@ -31,14 +31,30 @@ public interface Constants {
         String BATH_URL = BASE_SPACE + "&type=bath&pn=";//浴室
     }
 
-    interface Brand{
+    /**
+     * 优选活动
+     */
+    interface Event {
+
+        String EVENT_HOME = "http://ihome.cmfmobile.com:8080/sp/custom/getGoodActivity" +
+                ".do?__client__=android&__umeng_channel__=myapp&__read_loc_data__=false&pn=";
+    }
+
+    /**
+     * 品牌展厅
+     */
+    interface Brand {
 
         //品牌展厅首页
-        String BRAND_HOME_URL = "http://ihome.cmfmobile.com:8080/sp/custom/showBrand.do?__client__=android&__umeng_channel__=myapp";
+        String BRAND_HOME_URL = "http://ihome.cmfmobile.com:8080/sp/custom/showBrand" +
+                ".do?__client__=android&__umeng_channel__=myapp";
 
-        String BRAND_BASE_URL = "http://ihome.cmfmobile.com:8080/sp/custom/showProductClassByBrand.do?__client__=android&__umeng_channel__=myapp&brand=";
+        String BRAND_BASE_URL = "http://ihome.cmfmobile" +
+                ".com:8080/sp/custom/showProductClassByBrand" +
+                ".do?__client__=android&__umeng_channel__=myapp&brand=";
 
-        String BRAND_FURNITURE_BASE_URL = "http://ihome.cmfmobile.com:8080/sp/custom/getProduct.do?__client__=android&__umeng_channel__=myapp&__read_loc_data__=false";
+        String BRAND_FURNITURE_BASE_URL = "http://ihome.cmfmobile.com:8080/sp/custom/getProduct" +
+                ".do?__client__=android&__umeng_channel__=myapp&__read_loc_data__=false";
     }
 
     /**

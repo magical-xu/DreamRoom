@@ -15,6 +15,7 @@
     <style name="MyToolBarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <item name="actionMenuTextColor">@color/main_white</item> <!--  敲定颜色-->
         <item name="android:textColorPrimary">@color/main_white</item>
+        <item name="android:textSize">@dimen/dr_text_one_eight</item>
     </style>
 
     <!-- toolbar弹出菜单样式 -->
