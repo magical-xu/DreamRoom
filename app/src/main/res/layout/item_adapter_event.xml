@@ -25,6 +25,7 @@
             android:layout_marginStart="@dimen/dr_space_six"
             android:layout_marginTop="@dimen/dr_space_six"
             android:singleLine="true"
+            android:textColor="@color/main_black"
             android:textSize="@dimen/dr_text_one_eight"
             android:textStyle="bold"/>
 
@@ -36,7 +37,7 @@
             android:layout_marginTop="@dimen/dr_space_six"
             android:singleLine="true"
             android:textColor="@color/main_black_grey"
-            android:textSize="@dimen/dr_text_one_six"/>
+            android:textSize="@dimen/dr_text_one_four"/>
 
         <TextView
             android:id="@+id/item_event_address"
@@ -46,7 +47,7 @@
             android:layout_marginTop="@dimen/dr_space_six"
             android:singleLine="true"
             android:textColor="@color/main_black_grey"
-            android:textSize="@dimen/dr_text_one_six"/>
+            android:textSize="@dimen/dr_text_one_four"/>
 
     </LinearLayout>
 

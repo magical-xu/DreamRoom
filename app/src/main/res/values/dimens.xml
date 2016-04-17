@@ -10,6 +10,7 @@
     <dimen name="dr_text_two_zero">20sp</dimen>
 
     <!-- 间距规范 -->
+    <dimen name="dr_space_four">4dp</dimen>
     <dimen name="dr_space_six">6dp</dimen>
     <dimen name="dr_space_seven">7dp</dimen>
     <dimen name="dr_space_eight">8dp</dimen>

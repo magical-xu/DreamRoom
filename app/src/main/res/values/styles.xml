@@ -9,7 +9,7 @@
     </style>
 
     <style name="MyTheme" parent="AppTheme">
-
+        <item name="android:listDivider">@drawable/recyclerview_divider_bg</item>
     </style>
 
     <style name="MyToolBarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">

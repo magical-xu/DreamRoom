@@ -104,6 +104,7 @@ public class GeomancyDetailActivity extends BaseActivity {
                 TextView tv = new TextView(this);
                 tv.setText(array[i]);
                 tv.setTextSize(17);
+                tv.setLineSpacing(getResources().getDimension(R.dimen.dr_space_eight), 1);
                 tv.setTextColor(Color.parseColor("#6D6D6D"));
                 container.addView(tv, params);
             }

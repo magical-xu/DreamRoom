@@ -29,7 +29,7 @@ public class EventAdapter extends AbsRecyclerAdapter<EventEntity> {
 
         if (null != data) {
 
-            tv_title.setText(data.getArea() + " | " + data.getName());
+            tv_title.setText(data.getCity() + " | " + data.getName());
             tv_time.setText(data.getTime());
             tv_address.setText("地址: " + data.getAreaDetail());
 

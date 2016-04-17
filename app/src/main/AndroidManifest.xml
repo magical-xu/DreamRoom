@@ -6,6 +6,13 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true"/>
+
     <application
         android:name=".base.AppContext"
         android:allowBackup="true"
@@ -27,6 +34,7 @@
         <activity android:name=".ui.activity.BrandFurnitureActivity"/>
         <activity android:name=".ui.activity.BrandProductActivity"/>
         <activity android:name=".ui.activity.WebContentActivity"/>
+        <activity android:name=".ui.activity.EventDetailActivity"/>
     </application>
 
 </manifest>

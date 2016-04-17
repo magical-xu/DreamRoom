@@ -1,6 +1,7 @@
 package com.idreamsky.dreamroom.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -16,6 +17,8 @@ import com.idreamsky.dreamroom.base.AbsRecyclerAdapter;
 import com.idreamsky.dreamroom.base.BaseFragment;
 import com.idreamsky.dreamroom.constant.ConstantString;
 import com.idreamsky.dreamroom.model.EventEntity;
+import com.idreamsky.dreamroom.ui.activity.EventDetailActivity;
+import com.idreamsky.dreamroom.ui.custum.DividerItemDecoration;
 import com.idreamsky.dreamroom.util.Constants;
 import com.idreamsky.dreamroom.util.JsonUtil;
 import com.idreamsky.dreamroom.util.VolleyUtil;
@@ -67,6 +70,8 @@ public class EventFragment extends BaseFragment implements SwipeRefreshLayout.On
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration
+                .VERTICAL_LIST));
 
         mAdapter = new EventAdapter(getActivity(), R.layout.item_adapter_event);
         recyclerView.setAdapter(mAdapter);
@@ -132,7 +137,12 @@ public class EventFragment extends BaseFragment implements SwipeRefreshLayout.On
 
     @Override
     public void onItemClick(View v, int position) {
-
+        Intent intent = new Intent(mContext, EventDetailActivity.class);
+        EventEntity one = mAdapter.getDatas().get(position);
+        if (null != one) {
+            intent.putExtra(EventDetailActivity.DATA, one);
+            startActivity(intent);
+        }
     }
 
 }
