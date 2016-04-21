@@ -19,6 +19,7 @@ import com.idreamsky.dreamroom.constant.ConstantString;
 import com.idreamsky.dreamroom.model.BrandFurnitureDetail;
 import com.idreamsky.dreamroom.util.Constants;
 import com.idreamsky.dreamroom.util.JsonUtil;
+import com.idreamsky.dreamroom.util.ToastUtil;
 import com.idreamsky.dreamroom.util.UrlUtil;
 import com.idreamsky.dreamroom.util.VolleyUtil;
 
@@ -138,7 +139,8 @@ public class BrandFurnitureActivity extends BaseActivity implements SwipeRefresh
                     if (null != tmpList && 0 != tmpList.size()) {
                         //坑爹啊这里 ，没数据返回的JSON不对强行加了一个
                         if (null == tmpList.get(0).getId()) {
-                            shortToast(ConstantString.NO_MORE_DATA);
+                            ToastUtil.ToastShort(BrandFurnitureActivity.this, ConstantString
+                                    .NO_MORE_DATA);
                             srl.setRefreshing(false);
                             return;
                         }
@@ -148,7 +150,8 @@ public class BrandFurnitureActivity extends BaseActivity implements SwipeRefresh
                             mAdapter.addDatas(tmpList);
                         }
                     } else {
-                        shortToast(ConstantString.LOAD_FAILED);
+                        ToastUtil.ToastShort(BrandFurnitureActivity.this, ConstantString
+                                .LOAD_FAILED);
                     }
                 }
                 srl.setRefreshing(false);
@@ -157,7 +160,7 @@ public class BrandFurnitureActivity extends BaseActivity implements SwipeRefresh
             @Override
             public void errorResponse(String url, VolleyError error) {
                 srl.setRefreshing(false);
-                shortToast(ConstantString.LOAD_FAILED);
+                ToastUtil.ToastShort(BrandFurnitureActivity.this, ConstantString.LOAD_FAILED);
             }
         });
     }

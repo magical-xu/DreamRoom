@@ -5,6 +5,7 @@ import com.idreamsky.dreamroom.model.BrandClazz;
 import com.idreamsky.dreamroom.model.BrandFurnitureDetail;
 import com.idreamsky.dreamroom.model.BrandHomeEntity;
 import com.idreamsky.dreamroom.model.BrandHomeEntity.BrandHomeModel;
+import com.idreamsky.dreamroom.model.CompanyEntity;
 import com.idreamsky.dreamroom.model.EventEntity;
 import com.idreamsky.dreamroom.model.GalleryEntity;
 import com.idreamsky.dreamroom.model.GeomancyDetail;
@@ -139,6 +140,30 @@ public class JsonUtil {
                 }
             }
         } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
+    /**
+     * 解析   家装公司首页List
+     * @param json
+     * @return
+     */
+    public static List<CompanyEntity> resolveCompanyEntity(String json){
+        List<CompanyEntity> list = new ArrayList<>();
+        try {
+            JSONArray jsonArray = new JSONArray(json);
+            if (null != jsonArray && 0 != jsonArray.length()) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    CompanyEntity one = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),
+                            CompanyEntity.class);
+                    if (null != one.getLogo()) {
+                        list.add(one);
+                    }
+                }
+            }
+        }catch(Exception ex){
             ex.printStackTrace();
         }
         return list;

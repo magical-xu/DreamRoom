@@ -17,6 +17,7 @@ import android.view.View;
 
 import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.base.BaseActivity;
+import com.idreamsky.dreamroom.constant.ConstantString;
 import com.idreamsky.dreamroom.ui.activity.GalleryActivity;
 import com.idreamsky.dreamroom.ui.fragment.BrandShowFragment;
 import com.idreamsky.dreamroom.ui.fragment.DecorationFragment;
@@ -24,6 +25,7 @@ import com.idreamsky.dreamroom.ui.fragment.EventFragment;
 import com.idreamsky.dreamroom.ui.fragment.GeomancyFragment;
 import com.idreamsky.dreamroom.ui.fragment.HomeFragment;
 import com.idreamsky.dreamroom.ui.fragment.TestFragAdapter;
+import com.idreamsky.dreamroom.util.ToastUtil;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -128,7 +130,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         //防止误碰Back键
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             if (System.currentTimeMillis() - exitTime > 2000) {
-                shortToast("再按一次，才能退出哦！");
+                ToastUtil.ToastShort(this, ConstantString.CLICK_MORE);
                 exitTime = System.currentTimeMillis();
             } else {
                 finish();
@@ -152,7 +154,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
         //ToolBar上的菜单
         if (id == R.id.id_menu_share) {
-            shortToast("分享");
+            ToastUtil.ToastShort(this, "分享");
             return true;
         }
 
@@ -166,6 +168,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
      */
     public void onNavigationViewMenuItemSelected(final NavigationView nav) {
 
+        getSupportFragmentManager();
         mNavigationView.setNavigationItemSelectedListener(new NavigationView
                 .OnNavigationItemSelectedListener() {
             @Override

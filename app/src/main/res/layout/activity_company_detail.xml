@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/common_title"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dr_space_six"
+            android:paddingRight="@dimen/dr_space_six">
+
+            <ImageView
+                android:id="@+id/id_company_detail_cover"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dr_space_two_zero_zero"
+                android:scaleType="fitXY"/>
+
+            <com.idreamsky.dreamroom.ui.custum.RoundedImageView
+                android:id="@+id/id_company_detail_logo"
+                android:layout_width="@dimen/dr_space_five_zero"
+                android:layout_height="@dimen/dr_space_five_zero"
+                android:layout_marginTop="@dimen/dr_space_eight"/>
+
+            <TextView
+                android:id="@+id/id_company_detail_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dr_space_six"
+                android:text="深圳土木匠实体家居有限公司"
+                android:textSize="@dimen/dr_text_one_six"/>
+
+            <TextView
+                android:id="@+id/id_company_detail_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dr_space_six"
+                android:singleLine="true"
+                android:text="地址：广东省深圳市龙华区民治梅陇路皇家一号C区3楼303"
+                android:textSize="@dimen/dr_text_one_two"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/dr_space_ten"
+                android:background="@color/main_black_grey"/>
+
+            <TextView
+                android:id="@+id/id_company_detail_legal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dr_space_six"
+                android:singleLine="true"
+                android:text="法人代表：欧阳坚"
+                android:textSize="@dimen/dr_text_one_four"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/id_company_detail_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dr_space_six"
+                android:singleLine="true"
+                android:text="联系电话：13588547985  / 6845772"
+                android:textSize="@dimen/dr_text_one_four"
+                android:visibility="gone"/>
+
+            <GridLayout
+                android:id="@+id/id_company_detail_img_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2">
+
+
+            </GridLayout>
+
+            <TextView
+                android:padding="@dimen/dr_space_eight"
+                android:id="@+id/id_company_detail_toggle"
+                android:layout_width="@dimen/dr_space_eight_zero"
+                android:layout_height="@dimen/dr_space_five_zero"
+                android:layout_marginTop="@dimen/dr_space_eight"
+                android:background="@drawable/company_toggle_btn_bg"
+                android:gravity="center"
+                android:text="@string/company_introduce"
+                android:textColor="@color/main_white"
+                android:textSize="@dimen/dr_text_one_six"/>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

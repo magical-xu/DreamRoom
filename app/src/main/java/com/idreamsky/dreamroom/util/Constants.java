@@ -32,6 +32,17 @@ public interface Constants {
     }
 
     /**
+     * 家装公司
+     */
+    interface Company {
+
+        String HOME_LIST_BASE = "http://ihome.cmfmobile.com:8080/sp/custom/getCommunityList" +
+                ".do?__client__=android&__umeng_channel__=myapp&__read_loc_data__=false";
+        String DETAIL_RELEVANT = "http://ihome.cmfmobile.com:8080/sp/custom/getCommunityModelList" +
+                ".do?__client__=android&__umeng_channel__=myapp&id=";
+    }
+
+    /**
      * 优选活动
      */
     interface Event {

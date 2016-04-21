@@ -23,4 +23,7 @@
     <color name="item_text_title">#292b2b</color>
     <color name="item_text_other">#a9b7b7</color>
 
+    <color name="floating_button_color">#9d55b8</color>
+    <color name="company_toggle_btn">#1ad91c</color>
+
 </resources>

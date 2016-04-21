@@ -26,6 +26,7 @@ import com.idreamsky.dreamroom.ui.custum.ImageDialog;
 import com.idreamsky.dreamroom.util.Constants;
 import com.idreamsky.dreamroom.util.JsonUtil;
 import com.idreamsky.dreamroom.util.L;
+import com.idreamsky.dreamroom.util.ToastUtil;
 import com.idreamsky.dreamroom.util.VolleyUtil;
 
 import org.xutils.view.annotation.ContentView;
@@ -157,7 +158,7 @@ public class GalleryActivity extends BaseActivity implements SwipeRefreshLayout
 
             @Override
             public void errorResponse(String url, VolleyError error) {
-                shortToast(ConstantString.LOAD_FAILED);
+                ToastUtil.ToastShort(GalleryActivity.this, ConstantString.LOAD_FAILED);
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

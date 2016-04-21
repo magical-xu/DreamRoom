@@ -6,18 +6,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.constant.ConstantString;
-import com.idreamsky.dreamroom.util.ToastUtil;
 
 import org.xutils.x;
 
 /**
  * Created by magical on 2016/3/5.
  */
-public class BaseActivity extends AppCompatActivity implements ConstantString, ToastUtil {
+public class BaseActivity extends AppCompatActivity implements ConstantString {
 
     private FragmentManager fragmentManager;
     private Fragment showFragment;
@@ -111,14 +109,4 @@ public class BaseActivity extends AppCompatActivity implements ConstantString, T
         fragmentTransaction.commit();
     }
 
-
-    @Override
-    public void shortToast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void longToast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
-    }
 }

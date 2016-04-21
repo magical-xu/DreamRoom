@@ -14,10 +14,12 @@ import com.idreamsky.dreamroom.adapter.BrandHomeAdapter;
 import com.idreamsky.dreamroom.base.AbsRecyclerAdapter;
 import com.idreamsky.dreamroom.base.BaseActivity;
 import com.idreamsky.dreamroom.base.BaseFragment;
+import com.idreamsky.dreamroom.constant.ConstantString;
 import com.idreamsky.dreamroom.model.BrandHomeEntity.BrandHomeModel;
 import com.idreamsky.dreamroom.ui.activity.BrandTypeListActivity;
 import com.idreamsky.dreamroom.util.Constants;
 import com.idreamsky.dreamroom.util.JsonUtil;
+import com.idreamsky.dreamroom.util.ToastUtil;
 import com.idreamsky.dreamroom.util.VolleyUtil;
 
 import org.xutils.view.annotation.ContentView;
@@ -78,6 +80,8 @@ public class BrandShowFragment extends BaseFragment implements SwipeRefreshLayou
     }
 
     private void loadData() {
+
+        showProcee(mContext);
         VolleyUtil.requestString(Constants.Brand.BRAND_HOME_URL, new VolleyUtil.OnRequest() {
             @Override
             public void response(String url, String response) {
@@ -88,12 +92,14 @@ public class BrandShowFragment extends BaseFragment implements SwipeRefreshLayou
                         mAdapter.setDatas(dataList);
                     }
                 }
+                dismissProcess();
                 swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
             public void errorResponse(String url, VolleyError error) {
-                ((BaseActivity) mContext).shortToast("加载失败");
+                dismissProcess();
+                ToastUtil.ToastShort(mContext, ConstantString.LOAD_FAILED);
                 swipeRefreshLayout.setRefreshing(false);
             }
         });

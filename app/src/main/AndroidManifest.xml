@@ -35,6 +35,7 @@
         <activity android:name=".ui.activity.BrandProductActivity"/>
         <activity android:name=".ui.activity.WebContentActivity"/>
         <activity android:name=".ui.activity.EventDetailActivity"/>
+        <activity android:name=".ui.activity.CompanyDetailActivity"/>
     </application>
 
 </manifest>

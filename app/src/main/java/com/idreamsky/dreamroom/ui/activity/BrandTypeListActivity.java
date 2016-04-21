@@ -13,6 +13,7 @@ import com.idreamsky.dreamroom.base.BaseActivity;
 import com.idreamsky.dreamroom.constant.ConstantString;
 import com.idreamsky.dreamroom.model.BrandClazz;
 import com.idreamsky.dreamroom.util.JsonUtil;
+import com.idreamsky.dreamroom.util.ToastUtil;
 import com.idreamsky.dreamroom.util.VolleyUtil;
 
 import org.xutils.view.annotation.ContentView;
@@ -68,7 +69,7 @@ public class BrandTypeListActivity extends BaseActivity implements AdapterView.O
 
                 @Override
                 public void errorResponse(String url, VolleyError error) {
-                    shortToast(ConstantString.LOAD_FAILED);
+                    ToastUtil.ToastShort(BrandTypeListActivity.this, ConstantString.LOAD_FAILED);
                 }
             });
         }
