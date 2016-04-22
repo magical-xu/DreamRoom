@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/id_cdntLayout"
     android:layout_width="match_parent"
@@ -19,7 +20,7 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ToolbarPopupTheme"
             app:theme="@style/MyToolBarTheme"
-            app:title="@string/tab_default" />
+            app:title="@string/tab_default"/>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/id_tabLayout"
@@ -27,9 +28,9 @@
             android:layout_height="wrap_content"
             app:tabGravity="fill"
             app:tabIndicatorColor="@color/tab_indicator_color"
+            app:tabIndicatorHeight="3dp"
             app:tabSelectedTextColor="@color/tab_indicator_color"
-            app:tabTextColor="@color/main_white"
-            app:tabIndicatorHeight="3dp" />
+            app:tabTextColor="@color/main_white"/>
 
 
     </android.support.design.widget.AppBarLayout>
@@ -38,6 +39,6 @@
         android:id="@+id/id_viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </android.support.design.widget.CoordinatorLayout>

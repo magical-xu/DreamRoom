@@ -4,21 +4,6 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/frag_geomancy_srl"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ListView
-            android:id="@+id/frag_geomancy_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@color/item_view_divider"
-            android:dividerHeight="1dp"
-            android:listSelector="@android:color/transparent"
-            android:paddingLeft="@dimen/dr_space_list_padding"
-            android:paddingRight="@dimen/dr_space_list_padding"/>
-
-    </android.support.v4.widget.SwipeRefreshLayout>
+    <include layout="@layout/common_refresh_list"/>
 
 </LinearLayout>

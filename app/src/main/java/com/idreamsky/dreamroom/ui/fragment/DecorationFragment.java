@@ -10,8 +10,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.idreamsky.dreamroom.R;
@@ -20,6 +20,7 @@ import com.idreamsky.dreamroom.base.AbsRecyclerAdapter;
 import com.idreamsky.dreamroom.base.BaseFragment;
 import com.idreamsky.dreamroom.constant.ConstantString;
 import com.idreamsky.dreamroom.model.CompanyEntity;
+import com.idreamsky.dreamroom.ui.activity.CityChangeActivity;
 import com.idreamsky.dreamroom.ui.activity.CompanyDetailActivity;
 import com.idreamsky.dreamroom.ui.custum.DividerItemDecoration;
 import com.idreamsky.dreamroom.util.Constants;
@@ -55,15 +56,17 @@ public class DecorationFragment extends BaseFragment implements SwipeRefreshLayo
     private CompanyAdapter mAdapter;
     private int lastVisibleItem;
     private int mCurrentNum = 0;
-    private String mCurrentCity = "深圳";
+    private String mCurrentCity = "深圳";//默认
     private List<CompanyEntity> mDataList;
+
+    private final int REQUEST_CODE = 2;
 
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
 
             mCurrentNum++;
-            loadData(ConstantString.STATE_LOAD_MORE, mCurrentCity);
+            loadData(ConstantString.STATE_LOAD_MORE);
         }
     };
 
@@ -109,12 +112,14 @@ public class DecorationFragment extends BaseFragment implements SwipeRefreshLayo
         floatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "跳转城市列表", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(mContext, CityChangeActivity.class);
+                startActivityForResult(intent, REQUEST_CODE);
             }
         });
     }
 
-    private void loadData(int state, String cityName) {
+    private void loadData(int state) {
 
         showProcee(mContext);
 
@@ -155,13 +160,13 @@ public class DecorationFragment extends BaseFragment implements SwipeRefreshLayo
     @Override
     public void loadDatas() {
         mCurrentNum = 1;
-        loadData(ConstantString.STATE_LOAD_REFRESH, mCurrentCity);
+        loadData(ConstantString.STATE_LOAD_REFRESH);
     }
 
     @Override
     public void onRefresh() {
         mCurrentNum = 1;
-        loadData(ConstantString.STATE_LOAD_REFRESH, mCurrentCity);
+        loadData(ConstantString.STATE_LOAD_REFRESH);
     }
 
     @Override
@@ -180,5 +185,22 @@ public class DecorationFragment extends BaseFragment implements SwipeRefreshLayo
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == REQUEST_CODE) {
+
+            if (resultCode == CityChangeActivity.RESULT_CODE) {
+
+                String selectCity = data.getStringExtra(CityChangeActivity.CITY_NAME);
+                if (!TextUtils.isEmpty(selectCity)) {
+                    mCurrentCity = selectCity;
+                    loadData(ConstantString.STATE_LOAD_REFRESH);
+                    recyclerView.scrollToPosition(0);
+                }
+            }
+
+        }
+    }
 }

@@ -5,22 +5,27 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.adapter.GeomancyAdapter;
+import com.idreamsky.dreamroom.base.AbsRecyclerAdapter;
 import com.idreamsky.dreamroom.base.BaseFragment;
 import com.idreamsky.dreamroom.constant.ConstantString;
 import com.idreamsky.dreamroom.model.GeomancyEntity;
 import com.idreamsky.dreamroom.ui.activity.GeomancyDetailActivity;
+import com.idreamsky.dreamroom.ui.custum.DividerItemDecoration;
 import com.idreamsky.dreamroom.util.Constants;
+import com.idreamsky.dreamroom.util.L;
 import com.idreamsky.dreamroom.util.VolleyUtil;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 
@@ -31,19 +36,21 @@ import java.util.List;
  * 装修风水
  */
 @ContentView(R.layout.frag_geomancy)
-public class GeomancyFragment extends BaseFragment implements AdapterView.OnItemClickListener,
-        AbsListView.OnScrollListener, SwipeRefreshLayout.OnRefreshListener {
+public class GeomancyFragment extends BaseFragment implements AbsRecyclerAdapter
+        .OnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
 
-    @ViewInject(R.id.frag_geomancy_srl)
+    @ViewInject(R.id.frag_common_srl)
     private SwipeRefreshLayout srlayout;
 
-    @ViewInject(R.id.frag_geomancy_list)
-    private ListView listView;
+    @ViewInject(R.id.frag_common_list)
+    private RecyclerView recyclerView;
 
     private int mCurrentPage = 1;
     private List<GeomancyEntity.GeomancyBean> mDataList;
     private GeomancyAdapter mAdapter;
     private Context mContext;
+
+    private int lastVisibleItem = 0;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -57,17 +64,46 @@ public class GeomancyFragment extends BaseFragment implements AdapterView.OnItem
     protected void init(View view) {
 
         mContext = getActivity();
-        mAdapter = new GeomancyAdapter(mContext, R.layout.item_adapter_geomancy);
-        listView.setAdapter(mAdapter);
 
-        initEvent();
+        srlayout.setColorSchemeResources(R.color.refresh_first_color, R.color
+                .refresh_second_color);
+        srlayout.setOnRefreshListener(this);
+
+        LinearLayoutManager manager = new LinearLayoutManager(mContext, LinearLayoutManager
+                .VERTICAL, false);
+        recyclerView.setLayoutManager(manager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration
+                .VERTICAL_LIST));
+
+        mAdapter = new GeomancyAdapter(mContext, R.layout.item_adapter_geomancy);
+        recyclerView.setAdapter(mAdapter);
+
+        initEvent(manager);
     }
 
-    private void initEvent() {
+    private void initEvent(final LinearLayoutManager manager) {
 
-        listView.setOnItemClickListener(this);
-        listView.setOnScrollListener(this);
+        mAdapter.setOnItemClickListener(this);
         srlayout.setOnRefreshListener(this);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem + 1 ==
+                        recyclerView.getAdapter().getItemCount()) {
+                    srlayout.setRefreshing(true);
+                    mHandler.sendEmptyMessage(1);
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                lastVisibleItem = manager.findLastVisibleItemPosition();
+            }
+        });
     }
 
     @Override
@@ -81,32 +117,54 @@ public class GeomancyFragment extends BaseFragment implements AdapterView.OnItem
 
         final int i_state = state;
 
+        showProcee(mContext);
         VolleyUtil.requestString(Constants.Geomancy.GEOMANCY_BASE_URL + mCurrentPage, new
                 VolleyUtil.OnRequest() {
 
                     @Override
                     public void response(String url, String response) {
-                        GeomancyEntity entity = new Gson().fromJson(response, GeomancyEntity.class);
-                        mDataList = entity.getData().getList();
-                        if (mDataList != null) {
-                            if (i_state == ConstantString.STATE_LOAD_REFRESH) {
-                                mAdapter.setDatas(mDataList);
-                            } else if (i_state == ConstantString.STATE_LOAD_MORE) {
-                                mAdapter.addDatas(mDataList);
+                        L.d(url);
+                        if (null != response) {
+
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                if (null != jsonObject.optJSONObject("data")) {
+                                    GeomancyEntity entity = new Gson().fromJson(response,
+                                            GeomancyEntity
+                                                    .class);
+                                    mDataList = entity.getData().getList();
+                                    if (mDataList != null) {
+                                        if (i_state == ConstantString.STATE_LOAD_REFRESH) {
+                                            mAdapter.setDatas(mDataList);
+                                        } else if (i_state == ConstantString.STATE_LOAD_MORE) {
+                                            mAdapter.addDatas(mDataList);
+                                        }
+                                        srlayout.setRefreshing(false);
+                                    }
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                            srlayout.setRefreshing(false);
                         }
+                        dismissProcess();
                     }
 
                     @Override
                     public void errorResponse(String url, VolleyError error) {
                         srlayout.setRefreshing(false);
+                        dismissProcess();
                     }
                 });
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onRefresh() {
+        mCurrentPage = 1;
+        loadData(ConstantString.STATE_LOAD_REFRESH);
+    }
+
+    @Override
+    public void onItemClick(View v, int position) {
         String newsId = mAdapter.getDatas().get(position).newsId;
         String browse = mAdapter.getDatas().get(position).viewCount;
         String favor = mAdapter.getDatas().get(position).favNums;
@@ -117,26 +175,5 @@ public class GeomancyFragment extends BaseFragment implements AdapterView.OnItem
         intent.putExtra(GeomancyDetailActivity.FAVORATE, favor);
         intent.putExtra(GeomancyDetailActivity.COMMENT, comment);
         startActivity(intent);
-    }
-
-    @Override
-    public void onScrollStateChanged(AbsListView view, int scrollState) {
-
-    }
-
-    @Override
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int
-            totalItemCount) {
-        // TODO: 2016/4/17 这么判断是有问题的
-        if (firstVisibleItem + visibleItemCount == totalItemCount) {
-            srlayout.setRefreshing(true);
-            mHandler.sendEmptyMessage(1);
-        }
-    }
-
-    @Override
-    public void onRefresh() {
-        mCurrentPage = 1;
-        loadData(ConstantString.STATE_LOAD_REFRESH);
     }
 }

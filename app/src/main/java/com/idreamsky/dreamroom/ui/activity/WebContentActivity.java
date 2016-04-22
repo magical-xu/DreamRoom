@@ -3,13 +3,19 @@ package com.idreamsky.dreamroom.ui.activity;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.base.BaseActivity;
+import com.idreamsky.dreamroom.constant.ConstantString;
+import com.nostra13.universalimageloader.utils.L;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -26,18 +32,29 @@ public class WebContentActivity extends BaseActivity {
     @ViewInject(R.id.id_web_content)
     private WebView webView;
 
+    @ViewInject(R.id.id_empty_data)
+    private RelativeLayout rl_no_data;
+
+    @ViewInject(R.id.id_no_data_anim)
+    private ImageView iv_anim;
+
     private String mLoadUrl;
+    private Animation animation;
 
     @Override
     public void init() {
 
-        tv_title.setText("淘宝");
+        tv_title.setText(ConstantString.TAO_BAO);
+
+        rl_no_data.setVisibility(View.GONE);
         Intent intent = getIntent();
         if (null != intent) {
             mLoadUrl = intent.getStringExtra(BrandProductActivity.LINK);
         }
         initWebView();
 
+        animation = AnimationUtils.loadAnimation(this, R.anim.far_to_near);
+        iv_anim.setAnimation(animation);
     }
 
     private void initWebView() {
@@ -49,13 +66,26 @@ public class WebContentActivity extends BaseActivity {
     @Override
     public void loadDatas() {
 
+        L.d(mLoadUrl);
         if (!TextUtils.isEmpty(mLoadUrl)) {
+            rl_no_data.setVisibility(View.GONE);
+            webView.setVisibility(View.VISIBLE);
             webView.loadUrl(mLoadUrl);
+        } else {
+            webView.setVisibility(View.GONE);
+            rl_no_data.setVisibility(View.VISIBLE);
+            animation.startNow();
         }
 
     }
 
     public void goBack(View view) {
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        animation.cancel();
     }
 }

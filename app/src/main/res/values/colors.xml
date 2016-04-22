@@ -25,5 +25,6 @@
 
     <color name="floating_button_color">#9d55b8</color>
     <color name="company_toggle_btn">#1ad91c</color>
+    <color name="letter_view_bg">#e0c8c0c0</color>
 
 </resources>

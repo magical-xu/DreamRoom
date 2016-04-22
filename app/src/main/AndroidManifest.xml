@@ -36,6 +36,7 @@
         <activity android:name=".ui.activity.WebContentActivity"/>
         <activity android:name=".ui.activity.EventDetailActivity"/>
         <activity android:name=".ui.activity.CompanyDetailActivity"/>
+        <activity android:name=".ui.activity.CityChangeActivity"/>
     </application>
 
 </manifest>

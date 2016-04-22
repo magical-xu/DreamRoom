@@ -76,6 +76,8 @@ public interface Constants {
         //风水首页 不加page
         String GEOMANCY_BASE_URL = "http://appapi.17house.com/NewsApi" +
                 ".php?version=1&pageSize=20&action=getNewsByTagId&tagIds=136&model=android&page=";
+
+
         //风水文章详情 不加id
         String GEOMANCY_DETAIL_URL = "http://appapi.17house.com/NewsApi" +
                 ".php?version=1&relatedNum=3&action=newsDetail&page=1&model=android&newsId=";
