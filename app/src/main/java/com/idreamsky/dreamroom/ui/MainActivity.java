@@ -19,6 +19,8 @@ import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.base.BaseActivity;
 import com.idreamsky.dreamroom.constant.ConstantString;
 import com.idreamsky.dreamroom.ui.activity.GalleryActivity;
+import com.idreamsky.dreamroom.ui.activity.InspirationActivity;
+import com.idreamsky.dreamroom.ui.activity.RecommendActivity;
 import com.idreamsky.dreamroom.ui.fragment.BrandShowFragment;
 import com.idreamsky.dreamroom.ui.fragment.DecorationFragment;
 import com.idreamsky.dreamroom.ui.fragment.EventFragment;
@@ -182,15 +184,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                     case R.id.nav_recommend:
                         msg = "精彩推荐";
                         intent.putExtra("data", msg);
-                        startActivity(intent);
+                        startActivity(new Intent(MainActivity.this, RecommendActivity.class));
                         break;
                     case R.id.nav_gallery:
                         startActivity(new Intent(MainActivity.this, GalleryActivity.class));
                         break;
                     case R.id.nav_inspiration:
-                        msg = "灵感专题";
-                        intent.putExtra("data", msg);
-                        startActivity(intent);
+                        startActivity(new Intent(MainActivity.this, InspirationActivity.class));
                         break;
                     case R.id.nav_collection:
                         msg = "我的收藏";

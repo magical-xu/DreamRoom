@@ -32,6 +32,14 @@ public interface Constants {
     }
 
     /**
+     * 灵感专题
+     */
+    interface Inspiration{
+
+        String THEME_LIST = "http://appapi.17house.com/xiaoguotuApi.php?version=1&pageSize=10&action=albumList&page=1&tagid=1&model=android";
+    }
+
+    /**
      * 家装公司
      */
     interface Company {

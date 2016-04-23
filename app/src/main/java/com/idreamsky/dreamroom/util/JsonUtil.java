@@ -9,6 +9,7 @@ import com.idreamsky.dreamroom.model.CompanyEntity;
 import com.idreamsky.dreamroom.model.EventEntity;
 import com.idreamsky.dreamroom.model.GalleryEntity;
 import com.idreamsky.dreamroom.model.GeomancyDetail;
+import com.idreamsky.dreamroom.model.InspirationTheme;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -159,6 +160,31 @@ public class JsonUtil {
                     CompanyEntity one = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),
                             CompanyEntity.class);
                     if (null != one.getLogo()) {
+                        list.add(one);
+                    }
+                }
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
+    /**
+     * 解析灵感专题
+     * @param json
+     * @return
+     */
+    public static List<InspirationTheme> resolveInspirationTheme(String json){
+        List<InspirationTheme> list = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray jsonArray = jsonObject.optJSONArray("data");
+            if (null != jsonArray && 0 != jsonArray.length()) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    InspirationTheme one = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),
+                            InspirationTheme.class);
+                    if (null != one.getId()) {
                         list.add(one);
                     }
                 }
