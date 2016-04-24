@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.base.BaseActivity;
 import com.idreamsky.dreamroom.constant.ConstantString;
+import com.idreamsky.dreamroom.ui.fragment.HomeFragment;
 import com.nostra13.universalimageloader.utils.L;
 
 import org.xutils.view.annotation.ContentView;
@@ -25,6 +26,8 @@ import org.xutils.view.annotation.ViewInject;
  */
 @ContentView(R.layout.activity_web_content)
 public class WebContentActivity extends BaseActivity {
+
+    public static final String TYPE_BANNER = "banner";
 
     @ViewInject(R.id.id_common_title)
     private TextView tv_title;
@@ -39,17 +42,23 @@ public class WebContentActivity extends BaseActivity {
     private ImageView iv_anim;
 
     private String mLoadUrl;
+    private int mType = 0;
     private Animation animation;
 
     @Override
     public void init() {
 
-        tv_title.setText(ConstantString.TAO_BAO);
-
         rl_no_data.setVisibility(View.GONE);
         Intent intent = getIntent();
         if (null != intent) {
             mLoadUrl = intent.getStringExtra(BrandProductActivity.LINK);
+            mType = intent.getIntExtra(TYPE_BANNER, 0);
+        }
+
+        if (HomeFragment.TYPE == mType) {
+            tv_title.setText(ConstantString.TOGETHER);
+        } else {
+            tv_title.setText(ConstantString.TAO_BAO);
         }
         initWebView();
 

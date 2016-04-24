@@ -10,6 +10,7 @@ public interface ConstantString {
     String NO_MORE_DATA = "没有更多数据了(●'◡'●)";
     String CLICK_MORE = "再按一次，才能退粗哦 o(^▽^)o";
     String TAO_BAO = "友情淘宝o(^▽^)o";
+    String TOGETHER = "一起装修网(●'◡'●)";
 
     int STATE_LOAD_REFRESH = 0;
     int STATE_LOAD_MORE = 1;

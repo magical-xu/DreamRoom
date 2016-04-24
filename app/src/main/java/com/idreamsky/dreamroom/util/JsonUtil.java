@@ -9,6 +9,7 @@ import com.idreamsky.dreamroom.model.CompanyEntity;
 import com.idreamsky.dreamroom.model.EventEntity;
 import com.idreamsky.dreamroom.model.GalleryEntity;
 import com.idreamsky.dreamroom.model.GeomancyDetail;
+import com.idreamsky.dreamroom.model.HomeBanner;
 import com.idreamsky.dreamroom.model.InspirationTheme;
 import com.idreamsky.dreamroom.model.ThemeDetail;
 
@@ -149,10 +150,11 @@ public class JsonUtil {
 
     /**
      * 解析   家装公司首页List
+     *
      * @param json
      * @return
      */
-    public static List<CompanyEntity> resolveCompanyEntity(String json){
+    public static List<CompanyEntity> resolveCompanyEntity(String json) {
         List<CompanyEntity> list = new ArrayList<>();
         try {
             JSONArray jsonArray = new JSONArray(json);
@@ -165,7 +167,7 @@ public class JsonUtil {
                     }
                 }
             }
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         return list;
@@ -173,24 +175,26 @@ public class JsonUtil {
 
     /**
      * 解析灵感专题
+     *
      * @param json
      * @return
      */
-    public static List<InspirationTheme> resolveInspirationTheme(String json){
+    public static List<InspirationTheme> resolveInspirationTheme(String json) {
         List<InspirationTheme> list = new ArrayList<>();
         try {
             JSONObject jsonObject = new JSONObject(json);
             JSONArray jsonArray = jsonObject.optJSONArray("data");
             if (null != jsonArray && 0 != jsonArray.length()) {
                 for (int i = 0; i < jsonArray.length(); i++) {
-                    InspirationTheme one = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),
+                    InspirationTheme one = new Gson().fromJson(jsonArray.getJSONObject(i)
+                            .toString(),
                             InspirationTheme.class);
                     if (null != one.getId()) {
                         list.add(one);
                     }
                 }
             }
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         return list;
@@ -198,10 +202,11 @@ public class JsonUtil {
 
     /**
      * 解析专题详情
+     *
      * @param json
      * @return
      */
-    public static List<ThemeDetail> resolveThemeDetail(String json){
+    public static List<ThemeDetail> resolveThemeDetail(String json) {
         List<ThemeDetail> list = new ArrayList<>();
         try {
             JSONObject jsonObject = new JSONObject(json);
@@ -216,7 +221,33 @@ public class JsonUtil {
                     }
                 }
             }
-        }catch(Exception ex){
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
+    /**
+     * 解析 首页Banner
+     *
+     * @param json
+     * @return
+     */
+    public static List<HomeBanner> resolveHomeBanner(String json) {
+        List<HomeBanner> list = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray jsonArray = jsonObject.optJSONArray("data");
+            if (null != jsonArray && 0 != jsonArray.length()) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    HomeBanner one = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),
+                            HomeBanner.class);
+                    if (null != one.getBanner_url()) {
+                        list.add(one);
+                    }
+                }
+            }
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         return list;
