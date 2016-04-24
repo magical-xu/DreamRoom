@@ -10,6 +10,7 @@ import com.idreamsky.dreamroom.model.EventEntity;
 import com.idreamsky.dreamroom.model.GalleryEntity;
 import com.idreamsky.dreamroom.model.GeomancyDetail;
 import com.idreamsky.dreamroom.model.InspirationTheme;
+import com.idreamsky.dreamroom.model.ThemeDetail;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -194,4 +195,31 @@ public class JsonUtil {
         }
         return list;
     }
+
+    /**
+     * 解析专题详情
+     * @param json
+     * @return
+     */
+    public static List<ThemeDetail> resolveThemeDetail(String json){
+        List<ThemeDetail> list = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            JSONObject dataObject = jsonObject.optJSONObject("data");
+            JSONArray jsonArray = dataObject.optJSONArray("images");
+            if (null != jsonArray && 0 != jsonArray.length()) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    ThemeDetail one = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),
+                            ThemeDetail.class);
+                    if (null != one.getId()) {
+                        list.add(one);
+                    }
+                }
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
 }

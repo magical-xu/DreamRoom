@@ -1,6 +1,8 @@
 package com.idreamsky.dreamroom.ui.activity;
 
+import android.content.Intent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -44,6 +46,21 @@ public class InspirationActivity extends BaseActivity {
 
         mAdapter = new InspirationAdapter(this, R.layout.item_adapter_inspiration);
         listView.setAdapter(mAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position >= 0 && position < mAdapter.getCount()) {
+
+                    InspirationTheme one = (InspirationTheme) mAdapter.getItem(position);
+                    Intent intent = new Intent(InspirationActivity.this, ThemeDetailActivity.class);
+                    intent.putExtra(ThemeDetailActivity.INTENT_ID, one.getId());
+                    intent.putExtra(ThemeDetailActivity.INTENT_TITLE, one.getTitle());
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     @Override

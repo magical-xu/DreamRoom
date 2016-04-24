@@ -34,9 +34,27 @@ public interface Constants {
     /**
      * 灵感专题
      */
-    interface Inspiration{
+    interface Inspiration {
 
-        String THEME_LIST = "http://appapi.17house.com/xiaoguotuApi.php?version=1&pageSize=10&action=albumList&page=1&tagid=1&model=android";
+        String THEME_LIST = "http://appapi.17house.com/xiaoguotuApi" +
+                ".php?version=1&pageSize=10&action=albumList&page=1&tagid=1&model=android";
+        String THEME_DETAIL = "http://appapi.17house.com/xiaoguotuApi" +
+                ".php?version=1&action=albumDetail&model=android&id=";
+    }
+
+    /**
+     * 首页
+     */
+    interface Home {
+
+        String Banner = "http://appapi.17house.com/AppManagerApi" +
+                ".php?version=1&action=getownerinfo&model=android";
+
+        String HotTopic = "http://api.wsq.umeng" +
+                ".com/v2/user/topics?dt=1459870296518&de=Redmi+Note+2&os=Android&en=Wi-Fi&sdkv=2" +
+                ".3.0&imei=867515021875389&ak=5603a02467e58e6ad00014ab&md5imei" +
+                "=fb6802e163fe0a1874b031eb7872d195&mac=fc%3A64%3Aba%3A16%3Ad4%3A10&count=20&fuid" +
+                "=5668d916ee78501a18a1e58a";
     }
 
     /**

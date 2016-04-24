@@ -39,6 +39,7 @@
         <activity android:name=".ui.activity.CityChangeActivity"/>
         <activity android:name=".ui.activity.InspirationActivity"/>
         <activity android:name=".ui.activity.RecommendActivity"/>
+        <activity android:name=".ui.activity.ThemeDetailActivity"/>
     </application>
 
 </manifest>

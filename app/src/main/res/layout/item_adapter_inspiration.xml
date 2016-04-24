@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dr_space_ten"
-            android:drawableLeft="@drawable/icon_geomancy_browse"
+            android:drawableLeft="@drawable/ins_eye"
             android:drawablePadding="@dimen/dr_space_eight"
             android:gravity="center_vertical"
             android:text="696"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dr_space_one_four"
             android:layout_marginRight="@dimen/dr_space_ten"
-            android:drawableLeft="@drawable/icon_geomancy_fav"
+            android:drawableLeft="@drawable/ins_heart"
             android:drawablePadding="@dimen/dr_space_eight"
             android:gravity="center_vertical"
             android:text="11"
@@ -63,8 +63,8 @@
         android:layout_marginTop="@dimen/dr_space_ten"
         android:lineSpacingExtra="@dimen/dr_space_two"
         android:maxLines="2"
-        android:paddingLeft="@dimen/dr_space_six"
-        android:paddingRight="@dimen/dr_space_six"
+        android:paddingLeft="@dimen/dr_space_ten"
+        android:paddingRight="@dimen/dr_space_ten"
         android:textSize="@dimen/dr_text_one_four"/>
 
 </RelativeLayout>

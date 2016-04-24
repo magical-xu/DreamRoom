@@ -9,6 +9,7 @@
     <dimen name="dr_text_one_six">16sp</dimen>
     <dimen name="dr_text_one_eight">18sp</dimen>
     <dimen name="dr_text_two_zero">20sp</dimen>
+    <dimen name="dr_text_two_two">22sp</dimen>
 
     <!-- 间距规范 -->
     <dimen name="dr_space_two">2dp</dimen>
@@ -32,6 +33,7 @@
     <dimen name="dr_space_eight_zero">80dp</dimen>
     <dimen name="dr_space_one_zero_zero">100dp</dimen>
     <dimen name="dr_space_one_five_zero">150dp</dimen>
+    <dimen name="dr_space_one_eight_zero">180dp</dimen>
     <dimen name="dr_space_two_zero_zero">200dp</dimen>
     <dimen name="dr_space_three_zero_zero">300dp</dimen>
     <dimen name="dr_space_four_zero_zero">400dp</dimen>
