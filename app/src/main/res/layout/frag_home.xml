@@ -3,12 +3,90 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@color/home_bg_color"
               android:orientation="vertical">
 
-    <com.bigkoo.convenientbanner.ConvenientBanner
-        android:id="@+id/id_home_banner"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dr_space_one_eight_zero"
-        app:canLoop="true"/>
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.bigkoo.convenientbanner.ConvenientBanner
+                android:id="@+id/id_home_banner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dr_space_one_five_zero"
+                app:canLoop="true"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dr_space_one_five_zero"
+                android:layout_marginTop="@dimen/dr_space_one_eight"
+                android:background="@color/main_white"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/dr_space_one_eight"
+                android:paddingRight="@dimen/dr_space_one_eight">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dr_space_one_four"
+                    android:text="@string/home_hot_topic"
+                    android:textSize="@dimen/dr_text_one_eight"/>
+
+                <HorizontalScrollView
+                    android:id="@+id/id_home_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/dr_space_eight"
+                    android:layout_marginTop="@dimen/dr_space_eight"
+                    android:layout_weight="1"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/id_home_hot_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dr_space_five_zero_zero"
+                android:layout_marginTop="@dimen/dr_space_one_eight"
+                android:background="@drawable/free_design_bg"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dr_space_three_five_zero"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/free_design_logo"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dr_space_four_zero"
+                    android:layout_marginLeft="@dimen/dr_space_eight"
+                    android:layout_marginRight="@dimen/dr_space_eight"
+                    android:layout_marginTop="@dimen/dr_space_eight"
+                    android:background="@drawable/city_center_bg"
+                    android:gravity="center"
+                    android:padding="@dimen/dr_space_eight"
+                    android:text="申请免费设计"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
 </LinearLayout>

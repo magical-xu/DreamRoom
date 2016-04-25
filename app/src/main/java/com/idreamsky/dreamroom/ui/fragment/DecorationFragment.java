@@ -60,6 +60,7 @@ public class DecorationFragment extends BaseFragment implements SwipeRefreshLayo
     private List<CompanyEntity> mDataList;
 
     private final int REQUEST_CODE = 2;
+    private boolean isPrepared;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -69,6 +70,24 @@ public class DecorationFragment extends BaseFragment implements SwipeRefreshLayo
             loadData(ConstantString.STATE_LOAD_MORE);
         }
     };
+
+    @Override
+    protected void lazyLoad() {
+
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+
+        mCurrentNum = 1;
+        loadData(ConstantString.STATE_LOAD_REFRESH);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        isPrepared = true;
+        //lazyLoad();
+    }
 
     @Override
     protected void init(View view) {
@@ -159,8 +178,7 @@ public class DecorationFragment extends BaseFragment implements SwipeRefreshLayo
 
     @Override
     public void loadDatas() {
-        mCurrentNum = 1;
-        loadData(ConstantString.STATE_LOAD_REFRESH);
+
     }
 
     @Override

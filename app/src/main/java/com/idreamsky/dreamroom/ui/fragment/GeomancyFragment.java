@@ -2,6 +2,7 @@ package com.idreamsky.dreamroom.ui.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -51,6 +52,7 @@ public class GeomancyFragment extends BaseFragment implements AbsRecyclerAdapter
     private Context mContext;
 
     private int lastVisibleItem = 0;
+    private boolean isPrepared;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -59,6 +61,22 @@ public class GeomancyFragment extends BaseFragment implements AbsRecyclerAdapter
             loadData(ConstantString.STATE_LOAD_MORE);
         }
     };
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        isPrepared = true;
+        //lazyLoad();
+    }
+
+    @Override
+    protected void lazyLoad() {
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+        mCurrentPage = 1;
+        loadData(ConstantString.STATE_LOAD_REFRESH);
+    }
 
     @Override
     protected void init(View view) {
@@ -109,8 +127,8 @@ public class GeomancyFragment extends BaseFragment implements AbsRecyclerAdapter
     @Override
     public void loadDatas() {
 
-        mCurrentPage = 1;
-        loadData(ConstantString.STATE_LOAD_REFRESH);
+//        mCurrentPage = 1;
+//        loadData(ConstantString.STATE_LOAD_REFRESH);
     }
 
     private void loadData(int state) {

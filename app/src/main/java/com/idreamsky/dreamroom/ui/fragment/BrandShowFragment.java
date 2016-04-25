@@ -2,6 +2,7 @@ package com.idreamsky.dreamroom.ui.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
@@ -48,6 +49,22 @@ public class BrandShowFragment extends BaseFragment implements SwipeRefreshLayou
     private List<BrandHomeModel> dataList;
     private BrandHomeAdapter mAdapter;
     private static final int SPAN_COUNT = 2;
+    private boolean isPrepared;
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        isPrepared = true;
+        //lazyLoad();
+    }
+
+    @Override
+    protected void lazyLoad() {
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+        loadData();
+    }
 
     @Override
     protected void init(View view) {
@@ -76,7 +93,7 @@ public class BrandShowFragment extends BaseFragment implements SwipeRefreshLayou
     @Override
     public void loadDatas() {
 
-        loadData();
+        //loadData();
     }
 
     private void loadData() {

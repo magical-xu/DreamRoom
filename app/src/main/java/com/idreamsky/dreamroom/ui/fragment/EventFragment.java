@@ -2,6 +2,7 @@ package com.idreamsky.dreamroom.ui.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -47,6 +48,7 @@ public class EventFragment extends BaseFragment implements SwipeRefreshLayout.On
     private EventAdapter mAdapter;
     private int lastVisibleItem;
     private List<EventEntity> mDataList;
+    private boolean isPrepared;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -55,6 +57,23 @@ public class EventFragment extends BaseFragment implements SwipeRefreshLayout.On
             loadData(ConstantString.STATE_LOAD_MORE);
         }
     };
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        isPrepared = true;
+        //lazyLoad();
+    }
+
+    @Override
+    protected void lazyLoad() {
+
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+        mCurrentNum = 1;
+        loadData(ConstantString.STATE_LOAD_REFRESH);
+    }
 
     @Override
     protected void init(View view) {
@@ -98,14 +117,14 @@ public class EventFragment extends BaseFragment implements SwipeRefreshLayout.On
 
     @Override
     public void loadDatas() {
-        mCurrentNum = 1;
-        loadData(ConstantString.STATE_LOAD_REFRESH);
+
     }
 
     private void loadData(int state) {
 
         String url = Constants.Event.EVENT_HOME + mCurrentNum;
         final int stateCode = state;
+        showProcee(mContext);
         VolleyUtil.requestString(url, new VolleyUtil.OnRequest() {
             @Override
             public void response(String url, String response) {
@@ -119,12 +138,14 @@ public class EventFragment extends BaseFragment implements SwipeRefreshLayout.On
                         }
                     }
                 }
+                dismissProcess();
                 srl.setRefreshing(false);
             }
 
             @Override
             public void errorResponse(String url, VolleyError error) {
                 srl.setRefreshing(false);
+                dismissProcess();
             }
         });
     }

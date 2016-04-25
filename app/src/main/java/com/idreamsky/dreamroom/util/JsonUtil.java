@@ -10,6 +10,7 @@ import com.idreamsky.dreamroom.model.EventEntity;
 import com.idreamsky.dreamroom.model.GalleryEntity;
 import com.idreamsky.dreamroom.model.GeomancyDetail;
 import com.idreamsky.dreamroom.model.HomeBanner;
+import com.idreamsky.dreamroom.model.HomeHot;
 import com.idreamsky.dreamroom.model.InspirationTheme;
 import com.idreamsky.dreamroom.model.ThemeDetail;
 
@@ -187,7 +188,7 @@ public class JsonUtil {
             if (null != jsonArray && 0 != jsonArray.length()) {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     InspirationTheme one = new Gson().fromJson(jsonArray.getJSONObject(i)
-                            .toString(),
+                                    .toString(),
                             InspirationTheme.class);
                     if (null != one.getId()) {
                         list.add(one);
@@ -243,6 +244,31 @@ public class JsonUtil {
                     HomeBanner one = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),
                             HomeBanner.class);
                     if (null != one.getBanner_url()) {
+                        list.add(one);
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
+    /**
+     * 解析 首页 热门话题
+     *
+     * @return
+     */
+    public static List<HomeHot> resolveHomeHot(String json) {
+        List<HomeHot> list = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray jsonArray = jsonObject.optJSONArray("items");
+            if (null != jsonArray && 0 != jsonArray.length()) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    HomeHot one = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),
+                            HomeHot.class);
+                    if (null != one.getName()) {
                         list.add(one);
                     }
                 }

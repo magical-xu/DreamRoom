@@ -217,6 +217,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         });
     }
 
+    public void switchPage(int index){
+
+    }
+
     /**
      * 初始化导航Fragment
      */

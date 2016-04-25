@@ -22,11 +22,34 @@ import java.io.Serializable;
 /**
  * Fragement基类 -- 泛型K 为需要传递到该fragment中的类型
  */
-public class BaseFragment<K extends Serializable> extends Fragment {
+public abstract class BaseFragment<K extends Serializable> extends Fragment {
     private boolean injected = false;
     protected static final String DATA_KEY = "datas";
 
     protected CatLoadingView loadingDialog;
+
+    protected boolean isVisible;
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (getUserVisibleHint()) {
+            isVisible = true;
+            onVisible();
+        } else {
+            isVisible = false;
+            onInvisible();
+        }
+    }
+
+    protected void onVisible(){
+        lazyLoad();
+    }
+
+    protected void onInvisible(){
+    }
+
+    protected abstract void lazyLoad();
 
     /**
      * 静态工厂方法
@@ -131,7 +154,7 @@ public class BaseFragment<K extends Serializable> extends Fragment {
         }
         getDatas(getArguments());
         init(view);
-        loadDatas();
+        //loadDatas();
     }
 
 
