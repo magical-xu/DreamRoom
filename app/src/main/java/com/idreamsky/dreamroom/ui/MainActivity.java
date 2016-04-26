@@ -27,6 +27,7 @@ import com.idreamsky.dreamroom.ui.fragment.EventFragment;
 import com.idreamsky.dreamroom.ui.fragment.GeomancyFragment;
 import com.idreamsky.dreamroom.ui.fragment.HomeFragment;
 import com.idreamsky.dreamroom.ui.fragment.TestFragAdapter;
+import com.idreamsky.dreamroom.util.ActivityManager;
 import com.idreamsky.dreamroom.util.ToastUtil;
 
 import org.xutils.view.annotation.ContentView;
@@ -135,7 +136,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 ToastUtil.ToastShort(this, ConstantString.CLICK_MORE);
                 exitTime = System.currentTimeMillis();
             } else {
-                finish();
+                ActivityManager.getAppManager().finishAllActivityAndExit();
+                //finish();
             }
             return true;
         }
@@ -217,7 +219,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         });
     }
 
-    public void switchPage(int index){
+    public void switchPage(int index) {
 
     }
 

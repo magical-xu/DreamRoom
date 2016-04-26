@@ -16,6 +16,8 @@ public class AppContext extends Application {
 
     public static ActivityManager mAMS;
 
+    public static String KEY_SPLASH_SHOW = "key_splash_show";
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -27,7 +29,7 @@ public class AppContext extends Application {
         UniversalUtil.initUniversal(this);
         ShareUtil.init(this);
         x.Ext.init(this);
-        x.Ext.setDebug(true);
+        //x.Ext.setDebug(true);
 
         mAMS = ActivityManager.getAppManager();
     }

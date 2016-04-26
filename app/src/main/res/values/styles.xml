@@ -57,4 +57,11 @@
         <item name="android:backgroundDimAmount">0.6</item>
     </style>
 
+    <style name="AppSplash" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
 </resources>

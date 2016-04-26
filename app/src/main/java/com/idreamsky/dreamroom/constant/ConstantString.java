@@ -14,4 +14,6 @@ public interface ConstantString {
 
     int STATE_LOAD_REFRESH = 0;
     int STATE_LOAD_MORE = 1;
+
+    String VALUE_SPLASH_SHOW = "isFirstIn";
 }

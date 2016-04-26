@@ -16,22 +16,21 @@
     <application
         android:name=".base.AppContext"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/dr_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
 
-        <activity android:name=".ui.activity.SplashActivity">
-
-
-        </activity>
-        <activity android:name=".ui.MainActivity">
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ui.MainActivity"/>
         <activity android:name=".ui.TestActivity"/>
         <activity android:name=".ui.activity.GalleryActivity"/>
         <activity android:name=".ui.activity.GeomancyDetailActivity"/>
