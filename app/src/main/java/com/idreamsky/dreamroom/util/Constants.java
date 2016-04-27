@@ -6,6 +6,17 @@ package com.idreamsky.dreamroom.util;
 public interface Constants {
 
     /**
+     * 精彩推荐
+     */
+    interface Recommand {
+
+        String Home = "http://ihome.cmfmobile" +
+                ".com:8080/sp/custom/getIndexProjectList" +
+                ".do?__client__=android&__umeng_channel__=myapp&__read_loc_data__=false&city" +
+                "=%E5%8C%97%E4%BA%AC%E5%B8%82&pn=";
+    }
+
+    /**
      * 家居图库
      */
     interface Gallery {

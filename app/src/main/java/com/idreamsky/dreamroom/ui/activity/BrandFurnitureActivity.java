@@ -186,4 +186,5 @@ public class BrandFurnitureActivity extends BaseActivity implements SwipeRefresh
             startActivity(intent, R.anim.hyperspace_in, R.anim.hyperspace_out);
         }
     }
+
 }

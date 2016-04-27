@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.constant.ConstantString;
+import com.idreamsky.dreamroom.util.ToastUtil;
 
 import org.xutils.x;
 
@@ -109,4 +110,9 @@ public class BaseActivity extends AppCompatActivity implements ConstantString {
         fragmentTransaction.commit();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ToastUtil.cleanToast();
+    }
 }

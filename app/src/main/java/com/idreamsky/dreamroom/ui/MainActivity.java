@@ -182,10 +182,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 String msg = "";
                 switch (item.getItemId()) {
 
-                    // TODO: 2016/3/5 点击跳转Activity，别忘了过场动画
                     case R.id.nav_recommend:
-                        msg = "精彩推荐";
-                        intent.putExtra("data", msg);
                         startActivity(new Intent(MainActivity.this, RecommendActivity.class));
                         break;
                     case R.id.nav_gallery:

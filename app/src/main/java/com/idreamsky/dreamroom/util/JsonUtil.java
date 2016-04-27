@@ -12,6 +12,7 @@ import com.idreamsky.dreamroom.model.GeomancyDetail;
 import com.idreamsky.dreamroom.model.HomeBanner;
 import com.idreamsky.dreamroom.model.HomeHot;
 import com.idreamsky.dreamroom.model.InspirationTheme;
+import com.idreamsky.dreamroom.model.Recommend;
 import com.idreamsky.dreamroom.model.ThemeDetail;
 
 import org.json.JSONArray;
@@ -269,6 +270,31 @@ public class JsonUtil {
                     HomeHot one = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),
                             HomeHot.class);
                     if (null != one.getName()) {
+                        list.add(one);
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
+    /**
+     * 解析 精彩推荐
+     *
+     * @param json
+     * @return
+     */
+    public static List<Recommend> resolveRecommend(String json) {
+        List<Recommend> list = new ArrayList<>();
+        try {
+            JSONArray jsonArray = new JSONArray(json);
+            if (null != jsonArray && 0 != jsonArray.length()) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    Recommend one = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),
+                            Recommend.class);
+                    if (0 != one.getId()) {
                         list.add(one);
                     }
                 }

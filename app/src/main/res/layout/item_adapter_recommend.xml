@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <com.idreamsky.dreamroom.ui.custum.GestureViewPager
+        android:id="@+id/item_recommend_vp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dr_space_two_five_zero">
+
+    </com.idreamsky.dreamroom.ui.custum.GestureViewPager>
+
+    <!--<com.idreamsky.dreamroom.ui.custum.MyHorizontalScrollView-->
+    <!--android:id="@+id/item_recommend_hl"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/dr_space_two_five_zero"-->
+    <!--android:background="@android:color/white"-->
+    <!--android:scrollbars="none">-->
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/id_gallery"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:orientation="horizontal">-->
+    <!--</LinearLayout>-->
+
+
+    <!--</com.idreamsky.dreamroom.ui.custum.MyHorizontalScrollView>-->
+
+    <ImageView
+        android:id="@+id/item_recommend_heart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dr_space_two_zero"
+        android:layout_marginTop="@dimen/dr_space_two_zero"
+        android:contentDescription="@string/recommend_heart"
+        android:src="@drawable/recommend_heart_selector"/>
+
+    <RelativeLayout
+        android:id="@+id/item_recommend_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dr_space_seven_zero"
+        android:layout_below="@id/item_recommend_vp"
+        android:background="@color/main_white"
+        android:padding="@dimen/dr_space_eight">
+
+        <TextView
+            android:id="@+id/item_recommend_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textSize="@dimen/dr_text_one_six"/>
+
+        <TextView
+            android:id="@+id/item_recommend_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_recommend_name"
+            android:layout_marginTop="@dimen/dr_space_six"
+            android:singleLine="true"
+            android:textColor="@color/item_text_other"
+            android:textSize="@dimen/dr_text_one_four"/>
+
+        <TextView
+            android:id="@+id/item_recommend_space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_recommend_name"
+            android:layout_marginStart="@dimen/dr_space_ten"
+            android:layout_marginTop="@dimen/dr_space_six"
+            android:layout_toEndOf="@id/item_recommend_style"
+            android:singleLine="true"
+            android:textColor="@color/item_text_other"
+            android:textSize="@dimen/dr_text_one_four"/>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/item_recommend_fl"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:layout_alignEnd="@id/item_recommend_vp"
+        android:layout_marginEnd="@dimen/dr_space_two_zero"
+        android:layout_marginTop="@dimen/dr_space_item_recommend_fl"
+        android:background="@drawable/city_center_bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_recommend_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dr_space_six"
+            android:textColor="@color/main_white"
+            android:textSize="@dimen/dr_text_one_six"/>
+
+        <TextView
+            android:id="@+id/item_recommend_priceInclude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dr_space_six"
+            android:textColor="@color/main_white"
+            android:textSize="@dimen/dr_text_one_four"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/item_recommend_hide"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dr_space_three_zero_zero"
+        android:contentDescription="@string/recommend_hide"
+        android:scaleType="fitXY"
+        android:visibility="gone"/>
+
+</RelativeLayout>

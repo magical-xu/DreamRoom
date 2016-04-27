@@ -44,6 +44,7 @@
         <activity android:name=".ui.activity.InspirationActivity"/>
         <activity android:name=".ui.activity.RecommendActivity"/>
         <activity android:name=".ui.activity.ThemeDetailActivity"/>
+        <activity android:name=".ui.activity.AuthorActivity"/>
     </application>
 
 </manifest>

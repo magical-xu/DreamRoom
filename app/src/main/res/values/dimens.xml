@@ -30,12 +30,14 @@
     <dimen name="dr_space_four_zero">40dp</dimen>
     <dimen name="dr_space_five_zero">50dp</dimen>
     <dimen name="dr_space_six_zero">60dp</dimen>
+    <dimen name="dr_space_seven_zero">70dp</dimen>
     <dimen name="dr_space_eight_zero">80dp</dimen>
     <dimen name="dr_space_one_zero_zero">100dp</dimen>
     <dimen name="dr_space_one_three_zero">130dp</dimen>
     <dimen name="dr_space_one_five_zero">150dp</dimen>
     <dimen name="dr_space_one_eight_zero">180dp</dimen>
     <dimen name="dr_space_two_zero_zero">200dp</dimen>
+    <dimen name="dr_space_two_five_zero">250dp</dimen>
     <dimen name="dr_space_three_zero_zero">300dp</dimen>
     <dimen name="dr_space_three_five_zero">350dp</dimen>
     <dimen name="dr_space_four_zero_zero">400dp</dimen>
@@ -45,5 +47,6 @@
 
     <dimen name="dr_space_list_padding">@dimen/dr_space_six</dimen>
     <dimen name="dr_space_item_img_common">@dimen/dr_space_five_zero</dimen>
+    <dimen name="dr_space_item_recommend_fl">215dp</dimen>
 
 </resources>
