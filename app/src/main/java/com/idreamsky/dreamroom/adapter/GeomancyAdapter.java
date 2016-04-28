@@ -6,21 +6,21 @@ import android.widget.TextView;
 
 import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.base.AbsRecyclerAdapter;
-import com.idreamsky.dreamroom.model.GeomancyEntity;
+import com.idreamsky.dreamroom.model.GeomancyBean;
 import com.idreamsky.dreamroom.util.UniversalUtil;
 
 /**
  * Created by magical on 2016/4/4.
  * 装修风水适配器
  */
-public class GeomancyAdapter extends AbsRecyclerAdapter<GeomancyEntity.GeomancyBean> {
+public class GeomancyAdapter extends AbsRecyclerAdapter<GeomancyBean> {
 
     public GeomancyAdapter(Context context, int resId) {
         super(context, resId);
     }
 
     @Override
-    public void bindDatas(MyViewHolder holder, GeomancyEntity.GeomancyBean data, int position) {
+    public void bindDatas(MyViewHolder holder, GeomancyBean data, int position) {
         TextView tv_title = (TextView) holder.getView(R.id.id_item_geomancy_title);
         TextView tv_browse = (TextView) holder.getView(R.id.id_item_geomancy_browse);
         TextView tv_far = (TextView) holder.getView(R.id.id_item_geomancy_far);

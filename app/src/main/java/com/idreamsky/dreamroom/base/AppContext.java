@@ -3,6 +3,7 @@ package com.idreamsky.dreamroom.base;
 import android.app.Application;
 
 import com.idreamsky.dreamroom.util.ActivityManager;
+import com.idreamsky.dreamroom.util.DBUtil;
 import com.idreamsky.dreamroom.util.ShareUtil;
 import com.idreamsky.dreamroom.util.UniversalUtil;
 import com.idreamsky.dreamroom.util.VolleyUtil;
@@ -30,7 +31,9 @@ public class AppContext extends Application {
         ShareUtil.init(this);
         x.Ext.init(this);
         //x.Ext.setDebug(true);
+        DBUtil.getInstance().initDB();
 
         mAMS = ActivityManager.getAppManager();
     }
+
 }

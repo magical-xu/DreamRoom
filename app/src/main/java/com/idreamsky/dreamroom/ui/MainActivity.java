@@ -18,6 +18,8 @@ import android.view.View;
 import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.base.BaseActivity;
 import com.idreamsky.dreamroom.constant.ConstantString;
+import com.idreamsky.dreamroom.ui.activity.AuthorActivity;
+import com.idreamsky.dreamroom.ui.activity.CollectActivity;
 import com.idreamsky.dreamroom.ui.activity.GalleryActivity;
 import com.idreamsky.dreamroom.ui.activity.InspirationActivity;
 import com.idreamsky.dreamroom.ui.activity.RecommendActivity;
@@ -192,14 +194,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                         startActivity(new Intent(MainActivity.this, InspirationActivity.class));
                         break;
                     case R.id.nav_collection:
-                        msg = "我的收藏";
-                        intent.putExtra("data", msg);
-                        startActivity(intent);
+                        startActivity(new Intent(MainActivity.this, CollectActivity.class));
                         break;
                     case R.id.nav_about_author:
-                        msg = "关于作者";
-                        intent.putExtra("data", msg);
-                        startActivity(intent);
+                        startActivity(new Intent(MainActivity.this, AuthorActivity.class));
                         break;
                     case R.id.nav_setting:
                         msg = "设置";

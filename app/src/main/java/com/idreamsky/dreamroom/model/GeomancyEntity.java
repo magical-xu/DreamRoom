@@ -30,19 +30,4 @@ public class GeomancyEntity {
         }
     }
 
-    public class GeomancyBean {
-        public String newsId;//跳转所需ID
-
-        public String title;//标题
-
-        public String viewCount;//浏览数
-
-        public String replies;//回复数
-
-        public String image;//图片
-
-        public String favNums;//收藏数
-    }
-
-
 }

@@ -27,13 +27,16 @@ public class Recommend {
      */
 
     private int id;
+
     private String indexType;
+
     private String price;
     private String style;
     private String priceInclude;
     private String houseType;
     private String name;
     private String space;
+
     private List<String> imageUrl;
 
     public int getId() {

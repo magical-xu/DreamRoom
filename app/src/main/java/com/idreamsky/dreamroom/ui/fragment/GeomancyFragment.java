@@ -1,11 +1,13 @@
 package com.idreamsky.dreamroom.ui.fragment;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,17 +20,25 @@ import com.idreamsky.dreamroom.adapter.GeomancyAdapter;
 import com.idreamsky.dreamroom.base.AbsRecyclerAdapter;
 import com.idreamsky.dreamroom.base.BaseFragment;
 import com.idreamsky.dreamroom.constant.ConstantString;
+import com.idreamsky.dreamroom.model.GeomancyBean;
 import com.idreamsky.dreamroom.model.GeomancyEntity;
+import com.idreamsky.dreamroom.model.SQLEntity;
 import com.idreamsky.dreamroom.ui.activity.GeomancyDetailActivity;
 import com.idreamsky.dreamroom.ui.custum.DividerItemDecoration;
 import com.idreamsky.dreamroom.util.Constants;
+import com.idreamsky.dreamroom.util.DBUtil;
 import com.idreamsky.dreamroom.util.L;
+import com.idreamsky.dreamroom.util.ToastUtil;
+import com.idreamsky.dreamroom.util.TransUtil;
 import com.idreamsky.dreamroom.util.VolleyUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.xutils.DbManager;
+import org.xutils.ex.DbException;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
 import java.util.List;
 
@@ -38,7 +48,8 @@ import java.util.List;
  */
 @ContentView(R.layout.frag_geomancy)
 public class GeomancyFragment extends BaseFragment implements AbsRecyclerAdapter
-        .OnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
+        .OnItemClickListener, SwipeRefreshLayout.OnRefreshListener, AbsRecyclerAdapter
+        .OnItemLongClickListener {
 
     @ViewInject(R.id.frag_common_srl)
     private SwipeRefreshLayout srlayout;
@@ -47,7 +58,7 @@ public class GeomancyFragment extends BaseFragment implements AbsRecyclerAdapter
     private RecyclerView recyclerView;
 
     private int mCurrentPage = 1;
-    private List<GeomancyEntity.GeomancyBean> mDataList;
+    private List<GeomancyBean> mDataList;
     private GeomancyAdapter mAdapter;
     private Context mContext;
 
@@ -104,6 +115,7 @@ public class GeomancyFragment extends BaseFragment implements AbsRecyclerAdapter
     private void initEvent(final LinearLayoutManager manager) {
 
         mAdapter.setOnItemClickListener(this);
+        mAdapter.setOnItemLongClickListener(this);
         srlayout.setOnRefreshListener(this);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -193,5 +205,53 @@ public class GeomancyFragment extends BaseFragment implements AbsRecyclerAdapter
         intent.putExtra(GeomancyDetailActivity.FAVORATE, favor);
         intent.putExtra(GeomancyDetailActivity.COMMENT, comment);
         startActivity(intent);
+    }
+
+    @Override
+    public void onItemLongClick(View v, int position) {
+
+        final int index = position;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        builder.setIcon(R.drawable.dr_icon);
+        builder.setTitle("收藏");
+        builder.setMessage("确认么??");
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                GeomancyBean bean = mAdapter.getDatas().get(index);
+                if (null != bean) {
+                    SQLEntity entity = TransUtil.transGeo2SQLEntity(bean);
+                    DbManager db = x.getDb(DBUtil.getInstance().getGeoDB());
+
+                    try {
+
+                        List<SQLEntity> datas = db.selector(SQLEntity.class).findAll();
+                        if (null != datas && 0 != datas.size()) {
+                            for (int i = 0; i < datas.size(); i++) {
+                                if (datas.get(i).getTitle().equals(entity.getTitle())) {
+                                    ToastUtil.ToastShort(mContext, "已收藏");
+                                    return;
+                                }
+                            }
+                        }
+
+                        db.save(entity);
+                        ToastUtil.ToastShort(mContext, "收藏成功");
+                    } catch (DbException ex) {
+                        ex.printStackTrace();
+                        ToastUtil.ToastShort(mContext, "收藏失败");
+                    }
+                }
+
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.show();
     }
 }

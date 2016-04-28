@@ -20,7 +20,6 @@
         android:layout_marginRight="20dp"
         android:layout_toLeftOf="@id/id_item_geomancy_img"
         android:maxLines="2"
-        android:text="住宅风水禁忌大全 比星座更靠谱"
         android:textColor="@color/item_text_title"
         android:textSize="@dimen/dr_text_one_six"/>
 

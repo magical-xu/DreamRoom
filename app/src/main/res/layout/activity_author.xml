@@ -1,9 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="@color/main_white"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="@dimen/dr_space_two_five_zero"
+        android:layout_height="@dimen/dr_space_two_five_zero"
+        android:layout_marginTop="@dimen/dr_space_one_eight"
+        android:scaleType="fitXY"
+        android:src="@drawable/nanchang_daxue"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dr_space_three_zero"
+        android:layout_marginTop="@dimen/dr_space_one_four"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dr_space_one_four"
+            android:text="软件学院 2016 届毕业生"
+            android:textSize="@dimen/dr_text_one_six"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dr_space_one_four"
+            android:text="专业 ： 软件工程"
+            android:textSize="@dimen/dr_text_one_six"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dr_space_one_four"
+            android:text="班级 ： （java）121班"
+            android:textSize="@dimen/dr_text_one_six"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dr_space_one_four"
+            android:text="指导教师： 欧阳皓"
+            android:textSize="@dimen/dr_text_one_six"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dr_space_one_four"
+            android:text="Version : DreamRoom v1.0"
+            android:textSize="@dimen/dr_text_one_six"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dr_space_one_four"
+            android:text="Author	: magical.xu 张旭"
+            android:textSize="@dimen/dr_text_one_six"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dr_space_one_four"
+            android:text="CopyRight : © 2016 DreamRoom ,Inc."
+            android:textSize="@dimen/dr_text_one_six"/>
+
+    </LinearLayout>
 
 
 </LinearLayout>
