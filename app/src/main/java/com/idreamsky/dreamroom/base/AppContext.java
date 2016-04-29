@@ -1,6 +1,7 @@
 package com.idreamsky.dreamroom.base;
 
 import android.app.Application;
+import android.content.ComponentCallbacks2;
 
 import com.idreamsky.dreamroom.util.ActivityManager;
 import com.idreamsky.dreamroom.util.DBUtil;
@@ -36,4 +37,21 @@ public class AppContext extends Application {
         mAMS = ActivityManager.getAppManager();
     }
 
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        if (level >= ComponentCallbacks2.TRIM_MEMORY_MODERATE) {
+            clear();
+        }
+    }
+
+    private void clear() {
+
+        UniversalUtil.clearCache();
+    }
 }

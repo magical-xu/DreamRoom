@@ -46,6 +46,7 @@
         <activity android:name=".ui.activity.ThemeDetailActivity"/>
         <activity android:name=".ui.activity.AuthorActivity"/>
         <activity android:name=".ui.activity.CollectActivity"/>
+        <activity android:name=".ui.activity.SettingActivity"/>
     </application>
 
 </manifest>

@@ -103,7 +103,7 @@ public class SplashActivity extends BaseActivity implements Animation.AnimationL
 
     public void jumpToMain() {
         Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent, R.anim.fade, R.anim.hold);
+        startActivity(intent, R.anim.zoomin, R.anim.zoomout);
         finish();
     }
 }

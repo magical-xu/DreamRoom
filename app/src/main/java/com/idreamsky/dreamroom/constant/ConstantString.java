@@ -11,6 +11,9 @@ public interface ConstantString {
     String CLICK_MORE = "再按一次，才能退粗哦 o(^▽^)o";
     String TAO_BAO = "友情淘宝o(^▽^)o";
     String TOGETHER = "一起装修网(●'◡'●)";
+    String ADDRESS = "地址 ：";
+    String LEGAL = "法人代表 ：";
+    String PHONE = "联系电话 ：";
 
     int STATE_LOAD_REFRESH = 0;
     int STATE_LOAD_MORE = 1;

@@ -23,6 +23,7 @@ import com.idreamsky.dreamroom.ui.activity.CollectActivity;
 import com.idreamsky.dreamroom.ui.activity.GalleryActivity;
 import com.idreamsky.dreamroom.ui.activity.InspirationActivity;
 import com.idreamsky.dreamroom.ui.activity.RecommendActivity;
+import com.idreamsky.dreamroom.ui.activity.SettingActivity;
 import com.idreamsky.dreamroom.ui.fragment.BrandShowFragment;
 import com.idreamsky.dreamroom.ui.fragment.DecorationFragment;
 import com.idreamsky.dreamroom.ui.fragment.EventFragment;
@@ -200,9 +201,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                         startActivity(new Intent(MainActivity.this, AuthorActivity.class));
                         break;
                     case R.id.nav_setting:
-                        msg = "设置";
-                        intent.putExtra("data", msg);
-                        startActivity(intent);
+                        startActivity(new Intent(MainActivity.this, SettingActivity.class));
                         break;
                 }
 
