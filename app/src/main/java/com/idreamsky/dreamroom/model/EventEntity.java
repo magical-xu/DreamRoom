@@ -1,11 +1,15 @@
 package com.idreamsky.dreamroom.model;
 
+import org.xutils.db.annotation.Column;
+import org.xutils.db.annotation.Table;
+
 import java.io.Serializable;
 
 /**
  * Created by magical on 2016/4/17.
  * 优选活动
  */
+@Table(name = "EventEntity")
 public class EventEntity implements Serializable {
 
     /**
@@ -22,17 +26,44 @@ public class EventEntity implements Serializable {
      * type : 3
      */
 
+    @Column(name = "sqlId", isId = true)
+    private int sqlId;
+
     private String area;
+
+    @Column(name = "areaDetail")
     private String areaDetail;
+
+    @Column(name = "background")
     private String background;
     private String brand;
     private String city;
+
+    @Column(name = "content")
     private String content;
     private String id;
+
+    @Column(name = "logo")
     private String logo;
+
+    @Column(name = "name")
     private String name;
+    @Column(name = "time")
     private String time;
     private String type;
+
+    @Override
+    public String toString() {
+        return "EventEntity{" +
+                "sqlId=" + sqlId +
+                ", areaDetail='" + areaDetail + '\'' +
+                ", background='" + background + '\'' +
+                ", content='" + content + '\'' +
+                ", logo='" + logo + '\'' +
+                ", name='" + name + '\'' +
+                ", time='" + time + '\'' +
+                '}';
+    }
 
     public String getArea() {
         return area;

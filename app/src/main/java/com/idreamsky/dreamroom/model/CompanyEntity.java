@@ -1,11 +1,15 @@
 package com.idreamsky.dreamroom.model;
 
+import org.xutils.db.annotation.Column;
+import org.xutils.db.annotation.Table;
+
 import java.io.Serializable;
 
 /**
  * Created by magical on 2016/4/18.
  * 家装公司
  */
+@Table(name = "CompanyEntity")
 public class CompanyEntity implements Serializable {
 
     /**
@@ -31,23 +35,53 @@ public class CompanyEntity implements Serializable {
      * wangwangName : qq1036732702
      */
 
+    @Column(name = "sqlId", isId = true)
+    private int sqlId;
+
     private String area;
+    @Column(name = "areaDetail")
     private String areaDetail;
     private String companyCode;
+
+    @Column(name = "companyIntroduction")
     private String companyIntroduction;
+
+    @Column(name = "companyName")
     private String companyName;
+
+    @Column(name = "cover")
     private String cover;
     private String goodHouseStyle;
     private String goodStyle;
     private String id;
+
+    @Column(name = "legalPerson")
     private String legalPerson;
+
+    @Column(name = "logo")
     private String logo;
     private String modelCount;
     private String personIntroduction;
+
+    @Column(name = "phone")
     private String phone;
     private String trueName;
     private String userName;
     private String wangwangName;
+
+    @Override
+    public String toString() {
+        return "CompanyEntity{" +
+                "sqlId=" + sqlId +
+                ", areaDetail='" + areaDetail + '\'' +
+                ", companyIntroduction='" + companyIntroduction + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", cover='" + cover + '\'' +
+                ", legalPerson='" + legalPerson + '\'' +
+                ", logo='" + logo + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 
     public String getArea() {
         return area;

@@ -68,17 +68,37 @@
                 android:singleLine="true"
                 android:textSize="@dimen/dr_text_one_four"/>
 
-            <TextView
-                android:id="@+id/id_company_detail_toggle"
-                android:layout_width="@dimen/dr_space_eight_zero"
-                android:layout_height="@dimen/dr_space_five_zero"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dr_space_eight"
                 android:layout_marginTop="@dimen/dr_space_eight"
-                android:background="@drawable/company_toggle_btn_bg"
-                android:gravity="center"
-                android:padding="@dimen/dr_space_eight"
-                android:text="@string/company_introduce"
-                android:textColor="@color/main_white"
-                android:textSize="@dimen/dr_text_one_six"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/id_company_detail_toggle"
+                    android:layout_width="@dimen/dr_space_eight_zero"
+                    android:layout_height="@dimen/dr_space_five_zero"
+                    android:background="@drawable/company_toggle_btn_bg"
+                    android:gravity="center"
+                    android:padding="@dimen/dr_space_eight"
+                    android:text="@string/company_introduce"
+                    android:textColor="@color/main_white"
+                    android:textSize="@dimen/dr_text_one_six"/>
+
+                <TextView
+                    android:id="@+id/id_company_collect"
+                    android:layout_width="@dimen/dr_space_eight_zero"
+                    android:layout_height="@dimen/dr_space_five_zero"
+                    android:layout_marginLeft="@dimen/dr_space_eight"
+                    android:background="@drawable/company_toggle_btn_bg"
+                    android:gravity="center"
+                    android:padding="@dimen/dr_space_eight"
+                    android:text="@string/collect"
+                    android:textColor="@color/main_white"
+                    android:textSize="@dimen/dr_text_one_six"/>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/id_company_detail_introduce"

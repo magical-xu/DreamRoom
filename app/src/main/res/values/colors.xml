@@ -28,6 +28,7 @@
     <color name="letter_view_bg">#e0c8c0c0</color>
 
     <color name="home_bg_color">#EEF2F3</color>
+    <color name="common_bg_color">#1bed73</color>
     <color name="home_layer_translucent">#e0615d5d</color>
 
 </resources>

@@ -1,22 +1,57 @@
 package com.idreamsky.dreamroom.model;
 
+import org.xutils.db.annotation.Column;
+import org.xutils.db.annotation.Table;
+
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2016/4/16.
  * 品牌展厅 - 具体家具
  */
-public class BrandFurnitureDetail {
+@Table(name = "BrandFurnitureDetail")
+public class BrandFurnitureDetail implements Serializable {
+
+    @Column(name = "sqlId", isId = true)
+    private int sqlId;
 
     public String bigPic;
+
+    @Column(name = "brand")
     public String brand;
+
+    @Column(name = "description")
     public String description;
+
     public String id;
+
+    @Column(name = "pic")
     public String pic;
+
+    @Column(name = "price")
     public String price;
     public String proNo;
     public String productClass;
+
+    @Column(name = "productName")
     public String productName;
     public String roomClass;
+
+    @Column(name = "taobaolinks")
     public String taobaolinks;
+
+    @Override
+    public String toString() {
+        return "BrandFurnitureDetail{" +
+                "sqlId=" + sqlId +
+                ", brand='" + brand + '\'' +
+                ", description='" + description + '\'' +
+                ", pic='" + pic + '\'' +
+                ", price='" + price + '\'' +
+                ", productName='" + productName + '\'' +
+                ", taobaolinks='" + taobaolinks + '\'' +
+                '}';
+    }
 
     public String getBigPic() {
         return bigPic;

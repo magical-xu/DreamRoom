@@ -38,6 +38,7 @@ public class BrandFurnitureActivity extends BaseActivity implements SwipeRefresh
         .OnRefreshListener, AbsRecyclerAdapter
         .OnItemClickListener {
 
+    public static final String INTENT_DATA = "intent_data";
     public static final String FURNITURE_NAME = "furniture_name";
     public static final String BRAND_NAME = "brand_name";
     public static final String PARAM_BRAND = "brand";
@@ -176,12 +177,13 @@ public class BrandFurnitureActivity extends BaseActivity implements SwipeRefresh
         BrandFurnitureDetail one = mAdapter.getDatas().get(position);
         if (null != one) {
             Intent intent = new Intent(this, BrandProductActivity.class);
-            intent.putExtra(BrandProductActivity.BRAND, one.getBrand());
-            intent.putExtra(BrandProductActivity.NAME, one.getProductName());
-            intent.putExtra(BrandProductActivity.PRICE, one.getPrice());
-            intent.putExtra(BrandProductActivity.DES, one.getDescription());
-            intent.putExtra(BrandProductActivity.IMG, one.getPic());
-            intent.putExtra(BrandProductActivity.LINK, one.getTaobaolinks());
+            intent.putExtra(BrandFurnitureActivity.INTENT_DATA, one);
+//            intent.putExtra(BrandProductActivity.BRAND, one.getBrand());
+//            intent.putExtra(BrandProductActivity.NAME, one.getProductName());
+//            intent.putExtra(BrandProductActivity.PRICE, one.getPrice());
+//            intent.putExtra(BrandProductActivity.DES, one.getDescription());
+//            intent.putExtra(BrandProductActivity.IMG, one.getPic());
+//            intent.putExtra(BrandProductActivity.LINK, one.getTaobaolinks());
 
             startActivity(intent, R.anim.hyperspace_in, R.anim.hyperspace_out);
         }

@@ -47,6 +47,10 @@
         <activity android:name=".ui.activity.AuthorActivity"/>
         <activity android:name=".ui.activity.CollectActivity"/>
         <activity android:name=".ui.activity.SettingActivity"/>
+        <activity android:name=".ui.activity.ColGeoActivity"/>
+        <activity android:name=".ui.activity.ColCompanyActivity"/>
+        <activity android:name=".ui.activity.ColEventActivity"/>
+        <activity android:name=".ui.activity.ColBrandActivity"/>
     </application>
 
 </manifest>

@@ -9,10 +9,17 @@ import com.idreamsky.dreamroom.base.BaseActivity;
 import com.idreamsky.dreamroom.constant.ConstantString;
 import com.idreamsky.dreamroom.model.CompanyEntity;
 import com.idreamsky.dreamroom.ui.custum.RoundedImageView;
+import com.idreamsky.dreamroom.util.DBUtil;
+import com.idreamsky.dreamroom.util.ToastUtil;
 import com.idreamsky.dreamroom.util.UniversalUtil;
 
+import org.xutils.DbManager;
+import org.xutils.ex.DbException;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
+
+import java.util.List;
 
 /**
  * Created by magical on 2016/4/19.
@@ -48,6 +55,9 @@ public class CompanyDetailActivity extends BaseActivity {
     @ViewInject(R.id.id_company_detail_toggle)
     private TextView tv_toggle;
 
+    @ViewInject(R.id.id_company_collect)
+    private TextView tv_collect;
+
     @ViewInject(R.id.id_company_detail_introduce)
     private TextView tv_introduce;
 
@@ -70,6 +80,37 @@ public class CompanyDetailActivity extends BaseActivity {
                     tv_introduce.setVisibility(View.VISIBLE);
                 } else {
                     tv_introduce.setVisibility(View.GONE);
+                }
+            }
+        });
+        tv_collect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (null == mData) {
+                    return;
+                }
+                //先查询数据库有没有收藏过
+                DbManager db = x.getDb(DBUtil.getInstance().getCompanyDB());
+                try {
+                    List<CompanyEntity> sqlData = db.selector(CompanyEntity.class).findAll();
+                    if (null != sqlData && sqlData.size() > 0) {
+                        for (int i = 0; i < sqlData.size(); i++) {
+                            CompanyEntity one = sqlData.get(i);
+                            if (mData.getCompanyName().equals(one.getCompanyName())) {
+                                ToastUtil.ToastShort(CompanyDetailActivity.this, ConstantString
+                                        .HAD_COLLECT);
+                                return;
+                            }
+                        }
+                    }
+
+                    db.save(mData);
+                    ToastUtil.ToastShort(CompanyDetailActivity.this, ConstantString
+                            .COLLECT_SUCCESS);
+                } catch (DbException e) {
+                    e.printStackTrace();
+                    ToastUtil.ToastShort(CompanyDetailActivity.this, ConstantString.COLLECT_FAILED);
                 }
             }
         });

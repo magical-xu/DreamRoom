@@ -14,6 +14,9 @@ public interface ConstantString {
     String ADDRESS = "地址 ：";
     String LEGAL = "法人代表 ：";
     String PHONE = "联系电话 ：";
+    String HAD_COLLECT = "已收藏";
+    String COLLECT_SUCCESS = "收藏成功";
+    String COLLECT_FAILED = "收藏失败";
 
     int STATE_LOAD_REFRESH = 0;
     int STATE_LOAD_MORE = 1;

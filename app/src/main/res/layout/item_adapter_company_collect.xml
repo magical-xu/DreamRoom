@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/dr_space_ten"
+              android:paddingTop="@dimen/dr_space_ten">
+
+    <TextView
+        android:id="@+id/id_item_company_collect_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/dr_space_ten"
+        android:gravity="center"
+        android:textSize="@dimen/dr_text_one_eight"/>
+
+</LinearLayout>

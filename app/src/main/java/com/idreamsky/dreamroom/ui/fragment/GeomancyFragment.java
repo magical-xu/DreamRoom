@@ -231,17 +231,17 @@ public class GeomancyFragment extends BaseFragment implements AbsRecyclerAdapter
                         if (null != datas && 0 != datas.size()) {
                             for (int i = 0; i < datas.size(); i++) {
                                 if (datas.get(i).getTitle().equals(entity.getTitle())) {
-                                    ToastUtil.ToastShort(mContext, "已收藏");
+                                    ToastUtil.ToastShort(mContext, ConstantString.HAD_COLLECT);
                                     return;
                                 }
                             }
                         }
 
                         db.save(entity);
-                        ToastUtil.ToastShort(mContext, "收藏成功");
+                        ToastUtil.ToastShort(mContext, ConstantString.COLLECT_SUCCESS);
                     } catch (DbException ex) {
                         ex.printStackTrace();
-                        ToastUtil.ToastShort(mContext, "收藏失败");
+                        ToastUtil.ToastShort(mContext, ConstantString.COLLECT_FAILED);
                     }
                 }
 

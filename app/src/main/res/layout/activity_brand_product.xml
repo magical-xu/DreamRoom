@@ -71,6 +71,17 @@
                 android:textColor="@color/main_white"
                 android:textSize="@dimen/dr_text_one_six"/>
 
+            <Button
+                android:id="@+id/id_product_collect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dr_space_eight"
+                android:background="@drawable/city_center_bg"
+                android:text="收藏"
+                android:textColor="@color/main_white"
+                android:textSize="@dimen/dr_text_one_six"/>
+
         </LinearLayout>
     </ScrollView>
 

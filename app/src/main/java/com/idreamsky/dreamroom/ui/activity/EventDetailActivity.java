@@ -8,11 +8,19 @@ import android.widget.TextView;
 
 import com.idreamsky.dreamroom.R;
 import com.idreamsky.dreamroom.base.BaseActivity;
+import com.idreamsky.dreamroom.constant.ConstantString;
 import com.idreamsky.dreamroom.model.EventEntity;
+import com.idreamsky.dreamroom.util.DBUtil;
+import com.idreamsky.dreamroom.util.ToastUtil;
 import com.idreamsky.dreamroom.util.UniversalUtil;
 
+import org.xutils.DbManager;
+import org.xutils.ex.DbException;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
+
+import java.util.List;
 
 /**
  * Created by magical on 2016/4/17.
@@ -75,5 +83,29 @@ public class EventDetailActivity extends BaseActivity {
         finish();
     }
 
+    public void collect(View view) {
 
+        if (null == mData) {
+            return;
+        }
+        DbManager db = x.getDb(DBUtil.getInstance().getEventDB());
+        try {
+            List<EventEntity> sqlList = db.selector(EventEntity.class).findAll();
+            if (null != sqlList && sqlList.size() > 0) {
+                for (int i = 0; i < sqlList.size(); i++) {
+                    EventEntity one = sqlList.get(i);
+                    if (mData.getName().equals(one.getName())) {
+                        ToastUtil.ToastShort(EventDetailActivity.this, ConstantString.HAD_COLLECT);
+                        return;
+                    }
+                }
+            }
+
+            db.save(mData);
+            ToastUtil.ToastShort(EventDetailActivity.this, ConstantString.COLLECT_SUCCESS);
+        } catch (DbException e) {
+            e.printStackTrace();
+            ToastUtil.ToastShort(EventDetailActivity.this, ConstantString.COLLECT_FAILED);
+        }
+    }
 }
